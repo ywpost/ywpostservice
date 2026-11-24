@@ -2058,8 +2058,10 @@ function osRender(list,cc){
   }).join('');
   if(cc&&list.length&&list[0].cc&&String(list[0].cc).toLowerCase()!==cc)p5osMsg('고르신 나라 결과가 없어 다른 나라 주소도 함께 보여 드려요. 맞는 것을 눌러 주세요.');
 }
+function osCJK(t){return /[\u3040-\u30ff\u3400-\u9fff\uac00-\ud7a3]/.test(String(t||''))}
 function osState(n,st){
   if(!st)return '';
+  if(osCJK(st))return '';
   var r=P5RC[n]||{},k=String(st).trim();
   var tab=(r.st&&P5ST[r.st])||[];
   for(var i=0;i<tab.length;i++){
@@ -2078,7 +2080,8 @@ function osFill(r){
   if(r.name&&r.street&&a2&&!(a2.value||'').trim()&&r.name.toLowerCase()!==r.street.toLowerCase()&&r.name.length<=28)a2.value=r.name;
   var got=[];
   if(a1)got.push('주소');if(r.city)got.push('도시');if(st)got.push('주');if(r.zip)got.push('우편번호');
-  p5osMsg((got.length?'넣은 칸: '+got.join('·')+' — ':'')+'아파트·호수는 Address 2에 덧붙여 주세요.');
+  if(osCJK(a1)||osCJK(r.city))p5osMsg('넣은 칸: '+got.join('·')+' — 영문이 아닌 글자가 있어요. 영문 표기로 고쳐 주세요.');
+  else p5osMsg((got.length?'넣은 칸: '+got.join('·')+' — ':'')+'아파트·호수는 Address 2에 덧붙여 주세요.');
   try{validate()}catch(e){}
 }
 function osSearch(){
