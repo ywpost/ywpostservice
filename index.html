@@ -1356,7 +1356,7 @@ function splitOneLine(raw){
     if (s.st === 'ask') bdg = '<span class="bdg y">우체국 확인</span>';
     else if (s.st === 'warn' && s.key !== 'ems') bdg += '<span class="bdg y">확인 필요</span>';
 
-    var tag = s.key === 'ems' ? '가장 빠른 길' : s.key === 'prem' ? 'FedEx 제휴' : s.key === 'sea' ? '' : '보통 배송';
+    var tag = s.key === 'prem' ? 'FedEx 제휴' : s.key === 'air' ? '비행기 소포' : '';
     var sub = [tag, daysText(s)].filter(Boolean).join(' · ');
 
     var save = '';
