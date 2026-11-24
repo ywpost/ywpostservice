@@ -1310,14 +1310,20 @@ function splitOneLine(raw){
       else if (s.st === 'ask') ask.push(m);
       else no.push(s);
     });
-    priced.sort(function (a, b) { return (a.total || 0) - (b.total || 0); });
+    priced.sort(function (a, b) {
+      if (a.key === 'ems') return -1;
+      if (b.key === 'ems') return 1;
+      return (a.total || 0) - (b.total || 0);
+    });
     ask.sort(function (a, b) { return (a.total || 1e12) - (b.total || 1e12); });
+    var cheapKey = '', cheapT = Infinity;
+    priced.forEach(function (s) { if ((s.total || 0) < cheapT) { cheapT = s.total || 0; cheapKey = s.key; } });
 
     var h = '';
-    priced.forEach(function (s, i) { h += cardHTML(s, Q, i === 0); });
+    priced.forEach(function (s, i) { h += cardHTML(s, Q, i === 0, cheapKey); });
     if (ask.length) {
       h += '<p class="tiny" style="text-align:left;margin:16px 0 8px;font-weight:700;color:var(--ink2)">우체국 확인이 필요한 방법</p>';
-      ask.forEach(function (s) { h += cardHTML(s, Q, false); });
+      ask.forEach(function (s) { h += cardHTML(s, Q, false, ''); });
     }
     $('cards').innerHTML = h;
 
@@ -1335,7 +1341,7 @@ function splitOneLine(raw){
     for (var i = 0; i < ITEMS.length; i++) if (ITEMS[i].id === id) return ITEMS[i].name.replace(/\s*\(.*$/, '');
     return id;
   }
-  function cardHTML(s, Q, hero) {
+  function cardHTML(s, Q, hero, cheapKey) {
     var priced = s.total != null;
     var price, plab = '';
     if (priced && s.ref) {
@@ -1352,7 +1358,7 @@ function splitOneLine(raw){
 
     var bdg = '';
     if (s.key === 'ems' && s.st !== 'ask') bdg += '<span class="bdg">가장 빠름</span>';
-    if (hero && s.key !== 'ems') bdg += '<span class="bdg g">가장 저렴</span>';
+    if (cheapKey && cheapKey === s.key && s.key !== 'ems') bdg += '<span class="bdg g">가장 저렴</span>';
     if (s.st === 'ask') bdg = '<span class="bdg y">우체국 확인</span>';
     else if (s.st === 'warn' && s.key !== 'ems') bdg += '<span class="bdg y">확인 필요</span>';
 
