@@ -115,7 +115,7 @@ details.why p{margin:4px 0 0;background:var(--warn-bg);color:var(--ink);border-r
 .selb{justify-self:start;font-family:var(--f-disp);font-size:.95rem;border:2px solid var(--line);color:var(--muted);border-radius:999px;padding:5px 14px;min-height:36px;display:inline-flex;align-items:center;gap:6px}
 .opt.sel{border:3px solid var(--blue)!important;background:var(--blue-soft)}
 .opt.sel .selb{background:var(--blue);border-color:var(--blue);color:var(--sheet)}
-.pickbar{background:var(--sheet);border-radius:16px;padding:10px 14px;display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;font-size:.9rem;box-shadow:0 3px 0 var(--shadow)}
+.pickbar{background:var(--sheet);border-radius:14px;padding:7px 12px;display:flex;flex-wrap:wrap;gap:4px 8px;align-items:center;font-size:.84rem;line-height:1.35;box-shadow:0 3px 0 var(--shadow)}
 .pickbar b{color:var(--blue)}
 .pickbar button{font:inherit;font-size:.85rem;color:var(--muted);background:none;border:0;text-decoration:underline;cursor:pointer;padding:4px 0}
 #kg::placeholder{color:var(--muted);opacity:.55}
@@ -1163,7 +1163,7 @@ function render(){
 
 function pkName(k){const SN={ems:'EMS',air:'항공소포',sea:'선편',prem:'EMS 프리미엄'};const [t,key]=k.split(':');return SN[key]+(t==='s'?'(나눠 보내기)':'')}
 function pickBar(){
-  if(!picked.size)return '<div class="pickbar" id="pickbar">👆 마음에 드는 방법을 눌러 골라 주세요. 여러 개 골라도 되고, 고르지 않으면 모든 방법이 견적서에 들어가요.</div>';
+  if(!picked.size)return '<div class="pickbar" id="pickbar">👆 방법을 눌러 고르세요 · 여러 개 골라도 돼요</div>';
   return '<div class="pickbar" id="pickbar">✔ 고른 방법 <b>'+[...picked].map(pkName).join(', ')+'</b> — 이 방법만 견적서에 들어가요. <button type="button" id="pkclr">선택 모두 풀기</button></div>';
 }
 function togglePk(k){if(picked.has(k))picked.delete(k);else picked.add(k);render();const nx=document.querySelector('[data-pk="'+k+'"]');if(nx)nx.focus({preventScroll:true})}
