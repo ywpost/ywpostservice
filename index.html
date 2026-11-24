@@ -1,4 +1,4 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style><script defer src="https://t1.kakaocdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script></head><body>
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <!-- ⓒ 2026 정읍영원우체국 제작 · 고객님 미리 확인해보아요 · 무단 복제·변경 배포 금지 -->
 <title>고객님 미리 확인해보아요 v3.1</title>
 <meta name="author" content="정읍영원우체국">
@@ -79,6 +79,13 @@ input:focus-visible,button:focus-visible{outline:3px solid var(--blue);outline-o
 .a-warn{background:var(--warn-bg);color:var(--warn)}
 .a-no{background:var(--no-bg);color:var(--no)}
 .a-warn p,.a-no p{margin:0;color:var(--ink)}
+.alert.fold{padding:0;gap:0}
+.alert.fold>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:6px;padding:11px 14px;min-height:44px;font-size:.95rem;line-height:1.35}
+.alert.fold>summary::-webkit-details-marker{display:none}
+.alert.fold>summary b{font-size:.98rem}
+.alert.fold>summary .car{margin-left:auto;font-size:.78rem;opacity:.8}
+.alert.fold[open]>summary .car{transform:rotate(180deg)}
+.alert.fold>p{padding:0 14px 12px}
 .opt{background:var(--sheet);border-radius:20px;padding:16px;box-shadow:0 5px 0 var(--shadow);display:grid;gap:8px;border:2px solid transparent}
 .opt.pick{border-color:var(--red)}
 .opt .row{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;flex-wrap:wrap}
@@ -315,6 +322,7 @@ body{word-break:keep-all;overflow-wrap:break-word}
 .vcard .qs button{font:inherit;font-size:.9rem;color:var(--ink);background:var(--sheet);border:2px solid var(--line);border-radius:999px;padding:8px 14px;min-height:44px;cursor:pointer}
 .vcard .qs button[aria-pressed="true"]{border-color:var(--warn);color:var(--warn);font-weight:700}
 .dnote{margin:0;background:var(--sheet);border-radius:14px;padding:10px 14px;font-size:.9rem;border-left:5px solid var(--red)}
+.dnote.thin{padding:4px 10px;font-size:.76rem;border-left-width:4px;border-radius:10px;color:var(--muted);line-height:1.35}
 .dnote b{color:var(--red)}
 .duty .go2{justify-self:start;font:inherit;font-size:.88rem;font-weight:700;color:var(--warn);background:var(--sheet);border:0;border-radius:999px;padding:8px 14px;min-height:40px;cursor:pointer}
 /* 실시간 견적 요약 */
@@ -502,7 +510,7 @@ details.cc-d summary .car{color:var(--or);margin-left:auto}
 .p5text{font:inherit;font-size:.9rem;color:var(--ink);background:var(--soft);border:2px solid var(--line);border-radius:12px;padding:10px;width:100%;min-height:120px}
 @media (min-width:1000px){.p5grid{grid-template-columns:1fr 1fr}.p5grid .wide{grid-column:1/-1}}
 
-/* ===== v3.3 4단계 요약 카드 · 한국 주소 검색 ===== */
+/* ===== v3.3 4단계 요약 카드 · 해외 주소 검색 ===== */
 .opt .ovd{margin:0;font-size:.92rem;font-weight:700;color:var(--muted)}
 .opt .ovgo{align-self:stretch;font:inherit;font-family:var(--f-disp);font-weight:700;font-size:1rem;background:var(--or);color:#fff;border:2px solid var(--or);border-radius:14px;padding:11px 14px;min-height:48px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px;box-shadow:0 8px 18px -12px rgba(232,93,4,.8)}
 .opt .ovgo:active{transform:translateY(1px)}
@@ -516,9 +524,18 @@ details.cc-d summary .car{color:var(--or);margin-left:auto}
 .opt details.ovx .saveb{margin:0}
 .opt details.ovx .facts{margin:2px 0}
 .opt details.ovx .note{margin:0}
-.p5post{display:grid;gap:8px;background:var(--soft);border:1px dashed var(--line);border-radius:14px;padding:10px 12px}
-.p5post button{font:inherit;font-weight:700;font-size:.92rem;background:var(--sheet);color:var(--ink);border:2px solid var(--line);border-radius:12px;padding:9px 14px;min-height:44px;cursor:pointer;justify-self:start;white-space:nowrap}
-.p5post .hint{margin:0;font-size:.82rem;color:var(--muted);line-height:1.45}
+.p5os{display:grid;gap:8px;background:var(--soft);border:1px dashed var(--line);border-radius:14px;padding:10px 12px}
+.p5os>label{font-weight:700;font-size:.9rem}
+.p5os>label .h{font-weight:400;font-size:.82rem;color:var(--muted)}
+.p5osrow{display:flex;gap:6px;flex-wrap:wrap}
+.p5osrow input{flex:1 1 150px;min-width:0;font:inherit;font-size:.95rem;padding:9px 12px;min-height:44px;border:2px solid var(--line);border-radius:12px;background:var(--sheet);color:var(--ink)}
+.p5osrow button{font:inherit;font-weight:700;font-size:.92rem;background:var(--sheet);color:var(--ink);border:2px solid var(--line);border-radius:12px;padding:9px 14px;min-height:44px;cursor:pointer;white-space:nowrap}
+.p5osrow button[disabled]{opacity:.55;cursor:default}
+.p5osres{display:grid;gap:6px}
+.p5osres .oi{display:grid;gap:1px;text-align:left;font:inherit;background:var(--sheet);color:var(--ink);border:2px solid var(--line);border-radius:12px;padding:8px 12px;min-height:44px;cursor:pointer}
+.p5osres .oi .n{font-weight:700;font-size:.92rem;line-height:1.3}
+.p5osres .oi .a{font-size:.82rem;color:var(--muted);line-height:1.4}
+.p5os .hint{margin:0;font-size:.82rem;color:var(--muted);line-height:1.45}
 </style>
 
 <div class="edge" aria-hidden="true"></div>
@@ -621,7 +638,7 @@ details.cc-d summary .car{color:var(--or);margin-left:auto}
   <section class="answer" aria-live="polite" aria-labelledby="ans">
     <h2 id="ans" tabindex="-1"><span class="num">4</span>이렇게 보낼 수 있어요</h2>
     <div id="alerts"></div>
-    <p class="dnote">💡 EMS·EMS 프리미엄의 큰 금액은 <b>인터넷 사전접수 5% 할인</b>이 들어간 금액이에요. 창구 접수 금액은 아래에 작게 적었어요.</p>
+    <p class="dnote thin">사전접수 5% 할인 적용 금액 기준</p>
     <div id="opts"></div>
     <div class="duty" id="duty" hidden>
       <h3>물건 값으로 면세·보상 확인하기 <span class="dz" id="dzone"></span></h3>
@@ -659,9 +676,14 @@ details.cc-d summary .car{color:var(--or);margin-left:auto}
       <div class="row"><button type="button" id="p5split">주소 나누기</button><span class="hint" id="p5splitmsg" role="status"></span></div>
     </div>
 
-    <div class="p5post">
-      <button type="button" id="p5postbtn">🇰🇷 한국 주소 검색(영문 자동변환)</button>
-      <span class="hint" id="p5postmsg" role="status">한국 주소를 검색하면 영문 도로명주소와 우편번호가 자동으로 들어가요.</span>
+    <div class="p5os">
+      <label for="p5osq">해외 받는 분 주소 검색 <span class="h">— 영문 주소·건물명·우편번호로 찾아요</span></label>
+      <div class="p5osrow">
+        <input id="p5osq" type="search" autocomplete="off" spellcheck="false" enterkeyhint="search" placeholder="예: 1600 Amphitheatre, Oxford St, Shinjuku">
+        <button type="button" id="p5osbtn">🔍 해외 주소 검색</button>
+      </div>
+      <div class="p5osres" id="p5osres"></div>
+      <span class="hint" id="p5osmsg" role="status">영문 주소나 건물 이름을 넣고 검색하면 주소·도시·주·우편번호가 자동으로 들어가요.</span>
     </div>
 
     <div class="p5grid">
@@ -1041,7 +1063,14 @@ function render(){
   const SR={ok:0,warn:1,ask:2,no:3};
   const r=combine(itemCats(),n,W,dims,bx.price);
   last={n,bx,r,kg:W,assumed:E.assumed};
-  $('alerts').innerHTML=ENGINE.notices(n).map(a=>'<div class="alert '+(a[0]==='no'?'a-no':'a-warn')+'"><b>'+a[1]+'</b><p>'+a[2]+'</p></div>').join('');
+  $('alerts').innerHTML=ENGINE.notices(n).map(a=>{
+    const lv=(a[0]==='no'?'a-no':'a-warn');
+    if(a[1]==='미국 관세'||a[1]==='유럽 통관'){
+      const fl=(typeof emojiOf==='function'?emojiOf(n):'')||'🌐';
+      return '<details class="alert '+lv+' fold"><summary><b>'+fl+' '+(a[1]==='미국 관세'?'미국 관세·면세':'유럽 통관')+' 안내 보기</b><span class="car">▾</span></summary><p>'+a[2]+'</p></details>';
+    }
+    return '<div class="alert '+lv+'"><b>'+a[1]+'</b><p>'+a[2]+'</p></div>';
+  }).join('');
   const ok=r.out.filter(s=>s.total!=null).sort((a,b)=>((MO[a.key])-(MO[b.key]))||a.total-b.total);
   const rg=ENGINE.quote({country:n,item:'gen',kg:W,dims,boxPrice:bx.price});
   const pa=r.out.map((s,k)=>s.st==='ask'&&rg.out[k].total!=null?Object.assign({},s,{total:rg.out[k].total,dtotal:rg.out[k].dtotal,fee:rg.out[k].fee,sur:rg.out[k].sur,days:rg.out[k].days||s.days,pask:1}):null).filter(Boolean).sort((a,b)=>((MO[a.key])-(MO[b.key]))||a.total-b.total);
@@ -1987,63 +2016,114 @@ function enter(fromPick){
   setTimeout(renderP5,30);
 }
 
-/* 한국 주소 검색(다음 우편번호) — 독립 웹/자체 도메인에서 동작, 클로드 미리보기에서는 안내만 */
-var p5postBusy=false;
-function p5postFallback(){
-  var el=q('p5postmsg');
-  if(el)el.textContent='독립 웹/자체 도메인에서 실시간 한국 주소 검색이 동작합니다. 지금 이 화면(클로드 미리보기)에서는 검색창을 열 수 없어 주소를 직접 적어 주세요.';
-}
-function p5postFill(data){
-  var road=(data.roadAddressEnglish||data.autoRoadAddressEnglish||'').trim();
-  var jibun=(data.jibunAddressEnglish||'').trim();
-  var addr=road||jibun;
-  var msg=q('p5postmsg');
-  if(!addr){if(msg)msg.textContent='영문 주소를 받지 못했어요. 칸에 직접 적어 주세요.';return}
-  q('p5a1').value=addr;
-  if(data.zonecode)q('p5zip').value=data.zonecode;
-  var toks=addr.replace(/,/g,' ').split(/\s+/).filter(Boolean);
-  var prov='',city='';
-  toks.forEach(function(t){
-    if(/-do$/i.test(t))prov=t;
-    if(/(?:-si|-gun|-gu)$/i.test(t))city=t;
+/* 해외 받는 분 주소 검색 — Photon(1순위) → OpenStreetMap Nominatim(2순위), 무료·API 키 없음 */
+var p5osBusy=false,p5osList=[];
+function p5osMsg(t){var el=q('p5osmsg');if(el)el.textContent=t}
+function ccOf(n){try{var c=ISO[n]||'';return c.length===2?c.toLowerCase():''}catch(e){return ''}}
+function ccFlag(cc){try{if(!cc||cc.length!==2)return '';return String.fromCodePoint.apply(null,[...cc.toLowerCase()].map(function(ch){return 0x1F1E6+ch.charCodeAt(0)-97}))}catch(e){return ''}}
+function fetchJSON(u,ms){
+  return new Promise(function(res,rej){
+    var ac=('AbortController' in window)?new AbortController():null;
+    var t=setTimeout(function(){if(ac)ac.abort();rej(new Error('timeout'))},ms||8000);
+    fetch(u,{mode:'cors',headers:{Accept:'application/json'},signal:ac?ac.signal:undefined})
+      .then(function(r){if(!r.ok)throw new Error('http '+r.status);return r.json()})
+      .then(function(j){clearTimeout(t);res(j)})
+      .catch(function(e){clearTimeout(t);rej(e)});
   });
-  if(!city&&toks.length){
-    var big=['Seoul','Busan','Incheon','Daegu','Daejeon','Gwangju','Ulsan','Sejong'];
-    var l1=toks[toks.length-1],l2=toks.length>1?toks[toks.length-2]:'';
-    if(big.indexOf(l1.replace(/-.*$/,''))>=0)city=l1;
-    else if(big.indexOf(l2.replace(/-.*$/,''))>=0){city=l2;prov=l1}
+}
+function osList(rows,cc){
+  var seen={},out=[];
+  rows.forEach(function(r){
+    if(!r||(!r.street&&!r.name&&!r.city))return;
+    var k=(r.hn+'|'+r.street+'|'+r.zip).toLowerCase();
+    if(seen[k])return;seen[k]=1;out.push(r);
+  });
+  out.sort(function(a,b){
+    var am=(cc&&String(a.cc).toLowerCase()===cc)?0:1,bm=(cc&&String(b.cc).toLowerCase()===cc)?0:1;
+    if(am!==bm)return am-bm;
+    var ac=(a.street?0:1)+(a.zip?0:1),bc=(b.street?0:1)+(b.zip?0:1);
+    return ac-bc;
+  });
+  return out.slice(0,6);
+}
+function osRender(list,cc){
+  p5osList=list;
+  var box=q('p5osres');if(!box)return;
+  box.innerHTML=list.map(function(r,i){
+    var t=r.name||((r.hn?r.hn+' ':'')+r.street);
+    var line=[((r.hn?r.hn+' ':'')+r.street).trim(),r.city,(r.state||'')+(r.zip?' '+r.zip:''),r.country].filter(Boolean).join(', ');
+    if(line===t)line=r.country||'';
+    return '<button type="button" class="oi" data-i="'+i+'"><span class="n">'+ccFlag(r.cc)+' '+esc(t||line)+'</span><span class="a">'+esc(line)+'</span></button>';
+  }).join('');
+  if(cc&&list.length&&list[0].cc&&String(list[0].cc).toLowerCase()!==cc)p5osMsg('고르신 나라 결과가 없어 다른 나라 주소도 함께 보여 드려요. 맞는 것을 눌러 주세요.');
+}
+function osState(n,st){
+  if(!st)return '';
+  var r=P5RC[n]||{},k=String(st).trim();
+  var tab=(r.st&&P5ST[r.st])||[];
+  for(var i=0;i<tab.length;i++){
+    if(tab[i][0].toLowerCase()===k.toLowerCase()||tab[i][1].toLowerCase()===k.toLowerCase())return tab[i][0];
   }
-  if(city&&!fval('p5city'))q('p5city').value=city;
-  if(prov&&!fval('p5state'))q('p5state').value=prov;
-  if(data.buildingName&&!fval('p5a2'))q('p5a2').value=data.buildingName;
-  if(msg)msg.textContent='영문 주소와 우편번호를 채웠어요. 도시·주 표기는 한 번 확인해 주세요.';
+  if(r.st==='US'||r.st==='CA'){if(/^[A-Za-z]{2}$/.test(k))return k.toUpperCase()}
+  return k;
+}
+function osFill(r){
+  var a1=((r.hn?r.hn+' ':'')+r.street).trim()||r.name||'';
+  if(a1)q('p5a1').value=a1;
+  if(r.city)q('p5city').value=r.city;
+  var st=osState(state.country,r.state);if(st)q('p5state').value=st;
+  if(r.zip)q('p5zip').value=r.zip;
+  var a2=q('p5a2');
+  if(r.name&&r.street&&a2&&!(a2.value||'').trim()&&r.name.toLowerCase()!==r.street.toLowerCase()&&r.name.length<=28)a2.value=r.name;
+  var got=[];
+  if(a1)got.push('주소');if(r.city)got.push('도시');if(st)got.push('주');if(r.zip)got.push('우편번호');
+  p5osMsg((got.length?'넣은 칸: '+got.join('·')+' — ':'')+'아파트·호수는 Address 2에 덧붙여 주세요.');
   try{validate()}catch(e){}
 }
-function p5postOpen(){
-  var msg=q('p5postmsg');
-  if(typeof daum!=='undefined'&&daum.Postcode){
-    new daum.Postcode({oncomplete:p5postFill}).open();
-    return;
-  }
-  if(p5postBusy)return;
-  p5postBusy=true;
-  if(msg)msg.textContent='주소 검색을 준비하고 있어요…';
-  var done=false;
-  var fail=function(){if(done)return;done=true;p5postBusy=false;p5postFallback()};
-  var ready=function(){
-    if(done)return;done=true;p5postBusy=false;
-    if(typeof daum!=='undefined'&&daum.Postcode){if(msg)msg.textContent='';new daum.Postcode({oncomplete:p5postFill}).open()}
-    else p5postFallback();
+function osSearch(){
+  var v=(q('p5osq').value||'').trim();
+  if(!v){p5osMsg('영문 주소나 건물 이름을 먼저 적어 주세요.');return}
+  if(p5osBusy)return;
+  p5osBusy=true;var btn=q('p5osbtn');if(btn)btn.disabled=true;
+  q('p5osres').innerHTML='';p5osMsg('주소를 찾고 있어요…');
+  var cc=ccOf(state.country);
+  var finish=function(list){
+    p5osBusy=false;if(btn)btn.disabled=false;
+    if(!list.length){p5osMsg('검색 결과가 없어요. 영문 도로명·건물명으로 바꿔 보시거나, 아래 칸에 직접 적어 주세요.');return}
+    osRender(list,cc);
+    if(!(cc&&list.length&&list[0].cc&&String(list[0].cc).toLowerCase()!==cc))p5osMsg('결과를 누르면 주소·도시·주·우편번호가 자동으로 들어가요.');
   };
-  try{
-    var sc=document.createElement('script');
-    sc.src='https://t1.kakaocdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js';
-    sc.async=true;sc.onload=ready;sc.onerror=fail;
-    document.head.appendChild(sc);
-    setTimeout(function(){if(typeof daum==='undefined'||!daum.Postcode)fail()},6000);
-  }catch(e){fail()}
+  var nomi=function(){
+    var u='https://nominatim.openstreetmap.org/search?format=jsonv2&addressdetails=1&accept-language=en&limit=10&q='+encodeURIComponent(v)+(cc?'&countrycodes='+cc:'');
+    fetchJSON(u,9000).then(function(j){
+      finish(osList((j||[]).map(function(x){
+        var a=x.address||{};
+        return {name:x.name||a.building||a.amenity||'',hn:a.house_number||'',street:a.road||a.pedestrian||a.footway||a.residential||'',
+          city:a.city||a.town||a.village||a.municipality||a.county||'',state:a.state||'',zip:a.postcode||'',
+          cc:(a.country_code||'').toUpperCase(),country:a.country||''};
+      }),cc));
+    }).catch(function(){
+      p5osBusy=false;if(btn)btn.disabled=false;
+      p5osMsg('주소 검색 서버에 연결하지 못했어요. 잠시 뒤 다시 눌러 보시거나 아래 칸에 직접 적어 주세요.');
+    });
+  };
+  fetchJSON('https://photon.komoot.io/api/?q='+encodeURIComponent(v)+'&lang=en&limit=10',7000).then(function(j){
+    var f=(j&&j.features)||[];
+    var list=osList(f.map(function(x){
+      var p=x.properties||{};
+      return {name:p.name||'',hn:p.housenumber||'',street:p.street||'',
+        city:p.city||p.town||p.village||p.municipality||p.county||'',state:p.state||'',zip:p.postcode||'',
+        cc:(p.countrycode||'').toUpperCase(),country:p.country||''};
+    }),cc);
+    if(list.length)finish(list);else nomi();
+  }).catch(nomi);
 }
-var p5pb=q('p5postbtn');if(p5pb)p5pb.addEventListener('click',p5postOpen);
+var p5ob=q('p5osbtn');if(p5ob)p5ob.addEventListener('click',osSearch);
+var p5oq=q('p5osq');if(p5oq)p5oq.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();osSearch()}});
+var p5orr=q('p5osres');if(p5orr)p5orr.addEventListener('click',function(e){
+  var b=e.target.closest('.oi');if(!b)return;
+  var r=p5osList[+b.dataset.i];if(r)osFill(r);
+});
 
 window.__p5={render:renderP5,enter:enter};
 
