@@ -2037,7 +2037,7 @@ function p5postOpen(){
   };
   try{
     var sc=document.createElement('script');
-    sc.src='https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js';
+    sc.src='https://t1.kakaocdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js';
     sc.async=true;sc.onload=ready;sc.onerror=fail;
     document.head.appendChild(sc);
     setTimeout(function(){if(typeof daum==='undefined'||!daum.Postcode)fail()},6000);
