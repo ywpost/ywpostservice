@@ -2044,6 +2044,7 @@ function osList(rows,cc){
     var ac=(a.street?0:1)+(a.zip?0:1),bc=(b.street?0:1)+(b.zip?0:1);
     return ac-bc;
   });
+  if(cc){var same=out.filter(function(r){return String(r.cc).toLowerCase()===cc});if(same.length)out=same}
   return out.slice(0,6);
 }
 function osRender(list,cc){
