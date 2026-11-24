@@ -7,39 +7,34 @@
   .cap{font-weight:800;font-size:14px;letter-spacing:-.02em;margin:0 0 8px 2px;color:#1E293B}
   .cap span{color:#E85D04;margin-right:5px}
   .ph{width:390px;height:844px;border:0;transform:scale(.9);transform-origin:top left;border-radius:14px;
-      box-shadow:0 6px 22px rgba(30,41,59,.14);background:#fff;overflow:hidden}
+      box-shadow:0 6px 22px rgba(30,41,59,.14);background:#fff}
   .hold{width:351px;height:760px;overflow:hidden;border-radius:14px}
 </style></head>
 <body>
 <div class="wrap" id="wrap"></div>
 <script>
-var STEPS=[
-  ['1','나라','s1'],
-  ['2','물건','s2'],
-  ['3','상자','s3'],
-  ['4','요금','s4'],
-  ['5','접수','s5']
-];
-var wrap=document.getElementById('wrap');
+var STEPS=[['1','나라'],['2','물건'],['3','상자'],['4','요금'],['5','접수']];
+var wrap=document.getElementById('wrap'),frames=[],v='?v='+Date.now();
 STEPS.forEach(function(s){
   var col=document.createElement('div');col.className='col';
-  col.innerHTML='<p class="cap"><span>'+s[0]+'</span>'+s[1]+'</p><div class="hold"><iframe class="ph" src="./index.html?v=1"></iframe></div>';
-  wrap.appendChild(col);
+  col.innerHTML='<p class="cap"><span>'+s[0]+'</span>'+s[1]+'</p><div class="hold"></div>';
+  var fr=document.createElement('iframe');
+  fr.className='ph';fr.src='./index.html'+v;
+  col.querySelector('.hold').appendChild(fr);
+  frames.push(fr);wrap.appendChild(col);
 });
-var frames=[].slice.call(document.querySelectorAll('iframe'));
 var ready=0;
-frames.forEach(function(f,i){
+frames.forEach(function(f){
   f.addEventListener('load',function(){
     ready++;
     if(ready<frames.length)return;
     frames.forEach(function(fr,i){
       var w=fr.contentWindow;
       try{
-        var A=w.__app;
+        var A=w.__app,d=w.document;
         A.S.country='미국';A.S.items=['kim'];A.S.box='b3';A.S.kg=3;
-        if(i===3||i===4)A.S.method='ems';
+        if(i>=3)A.S.method='ems';
         if(i===4){
-          var d=w.document;
           d.getElementById('fName').value='KIM MINSU';
           d.getElementById('fTel').value='650 555 0142';
           d.getElementById('fMail').value='mkim@example.com';
@@ -49,7 +44,7 @@ frames.forEach(function(f,i){
           d.getElementById('fZip').value='94043';
         }
         A.go(i+1);
-        if(i===4){A.validate();}
+        if(i===4)A.validate();
         w.scrollTo(0,0);
       }catch(e){console.log('err',i,e)}
     });
