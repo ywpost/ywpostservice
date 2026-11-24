@@ -113,6 +113,8 @@ h2{font-size:22px;font-weight:800;letter-spacing:-.035em;line-height:1.32}
 .clist li[aria-selected="true"] b{color:var(--org-d);font-weight:700}
 .clist li button{display:flex;align-items:center;gap:11px;width:100%;text-align:left;font:inherit}
 .empty{padding:22px 15px;text-align:center;color:var(--ink3);font-size:13.5px}
+.allli{border-bottom:0!important;padding:0!important}
+.allli button{width:100%;padding:13px 15px;text-align:center;font-size:13px;font-weight:700;color:var(--org);letter-spacing:-.02em}
 
 /* ---------- step2 ---------- */
 .tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}
@@ -1114,6 +1116,11 @@ function splitOneLine(raw){
   }
   function countryList(q) {
     var cq = norm(q);
+    if (!cq) {
+      var head = QUICK.slice();
+      NAMES.forEach(function (n) { if (head.indexOf(n) < 0) head.push(n); });
+      return head;
+    }
     var list = NAMES.filter(function (n) {
       return matches(q, n + ' ' + (ALIAS[n] || '') + ' ' + ENN(n));
     });
@@ -1130,6 +1137,7 @@ function splitOneLine(raw){
     }
     return list.slice(0, cq ? 40 : 250);
   }
+  var showAll = false;
   function renderCountries() {
     var list = countryList(qc.value);
     $('qcx').classList.toggle('on', !!qc.value);
@@ -1137,11 +1145,17 @@ function splitOneLine(raw){
       clist.innerHTML = '<li class="empty">찾는 나라가 없어요. 카카오톡으로 물어봐 주세요.</li>';
       return;
     }
-    clist.innerHTML = list.map(function (n) {
+    var expand = !!qc.value || showAll;
+    var shown = expand ? list : list.slice(0, 14);
+    var h = shown.map(function (n) {
       var sel = n === S.country;
       return '<li role="option" aria-selected="' + sel + '">' +
         '<button type="button" data-c="' + esc(n) + '">' + flag(n) + '<b>' + esc(n) + '</b>' + (sel ? '<small>선택됨</small>' : '') + '</button></li>';
     }).join('');
+    if (!expand && list.length > shown.length) {
+      h += '<li class="allli"><button type="button" id="allBtn">모든 나라 보기 (' + list.length + ')</button></li>';
+    }
+    clist.innerHTML = h;
   }
   function renderQuick() {
     $('quick').innerHTML = QUICK.map(function (n) {
@@ -1165,6 +1179,7 @@ function splitOneLine(raw){
     var b = e.target.closest('.chip'); if (b) pickCountry(b.dataset.c);
   });
   clist.addEventListener('click', function (e) {
+    if (e.target.closest('#allBtn')) { showAll = true; renderCountries(); return; }
     var b = e.target.closest('button[data-c]'); if (b) pickCountry(b.dataset.c);
   });
 
