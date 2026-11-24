@@ -206,6 +206,8 @@ h2{font-size:22px;font-weight:800;letter-spacing:-.035em;line-height:1.32}
   letter-spacing:-.02em;margin-top:13px;transition:background .15s,transform .12s;
 }
 .go:active{transform:scale(.99);background:var(--org-d)}
+.go.ask{background:var(--org-l);color:var(--org-d);border:1.5px solid var(--org-line)}
+.go.ask:active{background:#FFE4D0}
 .more{margin-top:10px;border-top:1px solid var(--line2);padding-top:2px}
 .more>summary{list-style:none;display:flex;align-items:center;gap:5px;padding:9px 0 3px;font-size:12.5px;color:var(--ink2);font-weight:600;cursor:pointer;letter-spacing:-.01em}
 .more>summary::-webkit-details-marker{display:none}
@@ -227,6 +229,7 @@ h2{font-size:22px;font-weight:800;letter-spacing:-.035em;line-height:1.32}
 .btn.ghost{background:#fff;border:1.5px solid var(--line);color:var(--ink2)}
 .btn.ghost:active{background:var(--line2)}
 .btn.primary{background:var(--org);color:#fff;width:100%}
+a.btn{text-decoration:none;line-height:1}
 .btn.primary:active{background:var(--org-d)}
 .btn:disabled{opacity:.42}
 .tiny{font-size:11.5px;color:var(--ink3);text-align:center;margin-top:10px;letter-spacing:-.01em}
@@ -311,6 +314,7 @@ form#f{margin-top:18px;display:flex;flex-direction:column;gap:12px}
 @media (min-width:640px){
   .tiles{grid-template-columns:repeat(4,1fr)}
   h2{font-size:24px}
+  .brand,.steps{max-width:600px;margin-left:auto;margin-right:auto}
 }
 </style>
 </head>
@@ -830,7 +834,7 @@ function splitOneLine(raw){
     <details class="fold" id="noFold" hidden><summary><span id="noTitle"></span><span class="car">▾</span></summary><div class="body" id="noBody"></div></details>
     <div class="row2">
       <button type="button" class="btn ghost" id="copyQuote">견적만 복사</button>
-      <button type="button" class="btn ghost" id="kakao">카톡 상담</button>
+      <a class="btn ghost" id="kakao" href="https://pf.kakao.com/_wYcxhX/chat" target="_blank" rel="noopener">카톡 상담</a>
     </div>
     <p class="tiny">표시 요금은 인터넷우체국 사전접수 기준 예상 금액이에요. 접수할 때 확정돼요.</p>
   </section>
@@ -1039,7 +1043,7 @@ function splitOneLine(raw){
     var vol = Q.vol, kg = Q.kg;
     if (s.key === 'sea') return '선편은 실중량 ' + (kg || 0) + 'kg으로만 계산해요(부피무게 미적용)';
     if (!vol) return kg ? '실중량 ' + kg + 'kg' : '상자 크기를 알려주시면 더 정확해져요';
-    var big = ceil1(vol);
+    var big = Math.ceil(vol * 100) / 100;
     if (!kg) return '부피무게 약 ' + big + 'kg (상자 크기로 계산)';
     return '실중량 ' + kg + 'kg · 부피무게 약 ' + big + 'kg → ' + (kg >= big ? '실중량 ' + kg + 'kg' : '부피무게 ' + big + 'kg') + ' 적용';
   }
@@ -1092,7 +1096,7 @@ function splitOneLine(raw){
       inner.innerHTML = '<button type="button" class="btn primary" id="nx3">다음 · 요금 보기</button>';
     } else if (S.step === 5) {
       bar.classList.add('on');
-      inner.innerHTML = '<button type="button" class="btn primary" id="send">접수 내용 복사하고 카카오톡 보내기</button>';
+      inner.innerHTML = '<a class="btn primary" id="send" href="' + KAKAO + '" target="_blank" rel="noopener">접수 내용 복사하고 카카오톡 보내기</a>';
     } else {
       bar.classList.remove('on');
       inner.innerHTML = '';
@@ -1101,7 +1105,7 @@ function splitOneLine(raw){
   document.getElementById('bar').addEventListener('click', function (e) {
     if (e.target.id === 'nx2') go(3);
     if (e.target.id === 'nx3') go(4);
-    if (e.target.id === 'send') send();
+    if (e.target.id === 'send' || e.target.closest('#send')) send(e);
   });
 
   /* ---------- 1단계: 나라 ---------- */
@@ -1230,7 +1234,7 @@ function splitOneLine(raw){
     var d = dimsNow(), vol = volOf(d), kg = kgNow();
     var h = $('kgHint');
     if (vol > 0) {
-      h.innerHTML = '상자 크기로 계산한 부피무게는 약 <b>' + ceil1(vol) + 'kg</b>이에요. 항공은 실중량과 부피무게 중 무거운 쪽으로 요금을 매겨요.';
+      h.innerHTML = '상자 크기로 계산한 부피무게는 약 <b>' + (Math.ceil(vol * 100) / 100) + 'kg</b>이에요. 항공은 실중량과 부피무게 중 무거운 쪽으로 요금을 매겨요.';
     } else {
       h.innerHTML = '무게를 모르면 비워 두세요. 2kg은 운동화 한 켤레 정도예요.';
     }
@@ -1376,7 +1380,7 @@ function splitOneLine(raw){
     return '<article class="card' + (hero ? ' hero' : '') + '">' +
       '<div class="chd"><div><h3>' + esc(MLAB[s.key]) + '</h3><p>' + esc(sub) + '</p></div><div class="bdgs">' + bdg + '</div></div>' +
       plab + price + save +
-      '<button type="button" class="go" data-go="' + s.key + '">' + goLabel + ' →</button>' +
+      '<button type="button" class="go' + (s.st === 'ask' ? ' ask' : '') + '" data-go="' + s.key + '">' + goLabel + ' →</button>' +
       '<details class="more"><summary>상세 계산 보기 <span class="car">▾</span></summary><div class="mb">' +
       '<ul class="facts">' + facts.map(function (f) { return '<li>' + f + '</li>'; }).join('') + '</ul>' +
       notes +
@@ -1408,8 +1412,7 @@ function splitOneLine(raw){
     t += '\n' + L + '\n표시 요금은 인터넷우체국 사전접수 기준 예상 금액이에요. 접수할 때 확정돼요.\n';
     return t;
   }
-  $('copyQuote').addEventListener('click', function () { copy(quoteText(), '견적을 복사했어요'); });
-  $('kakao').addEventListener('click', function () { window.open(KAKAO, '_blank', 'noopener'); });
+  $('copyQuote').addEventListener('click', function () { copyText(quoteText()).then(function (okv) { toast(okv ? '견적을 복사했어요' : '복사가 안 됐어요. 견적을 직접 선택해 복사해 주세요'); }); });
 
   /* ---------- 5단계: 접수 ---------- */
   function render5() {
@@ -1652,9 +1655,10 @@ function splitOneLine(raw){
     return t;
   }
 
-  function send() {
+  function send(e) {
     var va = validate();
     if (!va.ok) {
+      if (e) e.preventDefault();
       toast(va.miss.length ? '아직 비어 있는 칸이 있어요: ' + va.miss.join(', ') : '확인이 필요한 항목이 있어요');
       var box = $('chk');
       if (box) box.scrollIntoView({ block: 'center', behavior: 'smooth' });
@@ -1662,29 +1666,35 @@ function splitOneLine(raw){
     }
     var text = build();
     $('pv').textContent = text;
-    copy(text);                    // 사용자 제스처 안에서 바로 복사 시작
-    window.open(KAKAO, '_blank', 'noopener');
-    toast('접수 내용을 복사했어요. 카카오톡에 붙여넣어 주세요');
+    copyText(text).then(function (okv) {
+      toast(okv ? '접수 내용을 복사했어요. 카카오톡에 붙여넣어 주세요' : '복사가 안 됐어요. 미리보기의 내용을 길게 눌러 복사해 주세요');
+    });
   }
 
-  function copy(text) {
-    var ok = false;
-    try {
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(text).catch(function () { fallbackCopy(text); });
-        ok = true;
-      }
-    } catch (e) { }
-    if (!ok) fallbackCopy(text);
+  function copyText(text) {
+    return new Promise(function (res) {
+      var done = false;
+      function ok(v) { if (!done) { done = true; res(v); } }
+      try {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(function () { ok(true); }, function () { ok(fallbackCopy(text)); });
+          setTimeout(function () { ok(true); }, 1200);
+          return;
+        }
+      } catch (e) { }
+      ok(fallbackCopy(text));
+    });
   }
   function fallbackCopy(text) {
     try {
       var ta = document.createElement('textarea');
       ta.value = text; ta.setAttribute('readonly', '');
       ta.style.cssText = 'position:fixed;left:-9999px;top:0';
-      document.body.appendChild(ta); ta.select(); document.execCommand('copy');
+      document.body.appendChild(ta); ta.select(); ta.setSelectionRange(0, text.length);
+      var okv = document.execCommand('copy');
       document.body.removeChild(ta);
-    } catch (e) { }
+      return !!okv;
+    } catch (e) { return false; }
   }
   var toastT;
   function toast(msg) {
