@@ -1187,6 +1187,7 @@ function splitOneLine(raw){
   }
 
   var MLAB = { ems: 'EMS', prem: 'EMS 프리미엄', air: '항공소포', sea: '선편소포' };
+  var MSHORT = { ems: 'EMS', prem: 'EMS 프리미엄', air: '항공', sea: '선편' };
   function daysText(s) {
     if (s.key === 'sea') return '배로 1~3개월';
     if (s.days) return '보통 ' + s.days[0] + '~' + s.days[1] + '일';
@@ -1567,7 +1568,7 @@ function splitOneLine(raw){
       if (!noM.length && !askM.length && warnM.length) chips += '<span class="itag warn">접수 전 확인</span>';
       var lines = reasonGroups(noM.concat(askM)).slice(0, 3).map(function (g) {
         var hasLab = g.m.some(function (k) { return g.t.indexOf(MLAB[k]) >= 0; });
-        var lab = hasLab ? '' : '<b>' + esc(g.m.map(function (k) { return MLAB[k]; }).join('·')) + '</b> ';
+        var lab = hasLab ? '' : '<b>' + esc(g.m.map(function (k) { return MSHORT[k] || MLAB[k]; }).join('·')) + '</b> ';
         return lab + esc(g.t);
       }).join('<br>');
       rows += '<li><div class="is-t"><b>' + esc(itemName(p.item)) + '</b>' + chips + '</div>' +
