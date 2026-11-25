@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#FAF8F5">
+<meta name="theme-color" content="#F1F5F9">
 <title>정읍영원우체국 해외배송 견적기</title>
 <meta name="description" content="나라·물건·상자만 고르면 EMS·항공소포·선편·EMS 프리미엄 요금을 바로 확인하고, 사전접수 내용까지 한 번에 정리해 드려요.">
 <meta property="og:title" content="정읍영원우체국 해외배송 견적기">
@@ -13,15 +13,15 @@
 <meta property="og:site_name" content="정읍영원우체국">
 <meta property="og:locale" content="ko_KR">
 <meta name="twitter:card" content="summary">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%23E85D04'/%3E%3Cpath d='M13 21h38v24a4 4 0 0 1-4 4H17a4 4 0 0 1-4-4z' fill='%23fff'/%3E%3Cpath d='M13 21l19 14 19-14' fill='none' stroke='%23E85D04' stroke-width='4.5' stroke-linejoin='round' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%232563EB'/%3E%3Cpath d='M13 21h38v24a4 4 0 0 1-4 4H17a4 4 0 0 1-4-4z' fill='%23fff'/%3E%3Cpath d='M13 21l19 14 19-14' fill='none' stroke='%232563EB' stroke-width='4.5' stroke-linejoin='round' stroke-linecap='round'/%3E%3C/svg%3E">
 <style>
 :root{
-  --bg:#FAF8F5; --card:#FFFFFF; --ink:#1E293B; --ink2:#56637A; --ink3:#8A94A6;
-  --line:#EBE5DB; --line2:#F3EEE6;
-  --org:#E85D04; --org-d:#C74B00; --org-l:#FFF1E6; --org-line:#F6C9A8;
-  --ok:#0F7A55; --ok-l:#E9F6F0;
-  --warn:#A85A00; --warn-l:#FFF6E8;
-  --no:#B3261E; --no-l:#FDEDEC;
+  --bg:#F1F5F9; --card:#FFFFFF; --ink:#0F172A; --ink2:#475569; --ink3:#7C8AA0;
+  --line:#E2E8F0; --line2:#E9EEF6;
+  --pri:#2563EB; --pri-d:#1D4ED8; --pri-l:#EFF6FF; --pri-line:#BFDBFE;
+  --ok:#047857; --ok-l:#ECFDF5;
+  --warn:#B45309; --warn-l:#FFFBEB; --warn-line:#FCD34D;
+  --no:#B91C1C; --no-l:#FEF2F2; --no-line:#FECACA;
   --r:16px;
   color-scheme:light;
 }
@@ -38,7 +38,7 @@ button,input,select,textarea{font:inherit;color:inherit}
 button{cursor:pointer;border:0;background:none}
 h1,h2,h3,p,ul,ol,li{margin:0;padding:0}
 ul,ol{list-style:none}
-a{color:var(--org);text-decoration:none}
+a{color:var(--pri);text-decoration:none}
 svg{display:block}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
@@ -46,11 +46,11 @@ svg{display:block}
 .top{
   position:sticky;top:0;z-index:40;
   padding:calc(env(safe-area-inset-top,0px) + 10px) 0 0;
-  background:rgba(250,248,245,.94);backdrop-filter:saturate(180%) blur(14px);
+  background:rgba(241,245,249,.94);backdrop-filter:saturate(180%) blur(14px);
   border-bottom:1px solid var(--line2);
 }
 .brand{display:flex;align-items:center;gap:9px;padding:0 18px}
-.mark{width:28px;height:28px;border-radius:9px;background:var(--org);display:grid;place-items:center;flex:0 0 auto}
+.mark{width:28px;height:28px;border-radius:9px;background:var(--pri);display:grid;place-items:center;flex:0 0 auto}
 .mark svg{width:17px;height:17px}
 .who b{display:block;font-size:14px;font-weight:700;letter-spacing:-.02em;line-height:1.2}
 .who span{display:block;font-size:11.5px;color:var(--ink3);letter-spacing:-.01em}
@@ -65,11 +65,11 @@ svg{display:block}
 .st span{font-size:11.5px;color:var(--ink3);letter-spacing:-.02em;white-space:nowrap}
 .st:after{content:"";position:absolute;top:13px;left:calc(50% + 15px);right:calc(-50% + 15px);height:1.5px;background:var(--line);border-radius:2px}
 .st:last-child:after{display:none}
-.st[aria-current="step"] i{background:var(--org);border-color:var(--org);color:#fff;transform:scale(1.06)}
-.st[aria-current="step"] span{color:var(--org);font-weight:700}
-.st.done i{background:var(--org-l);border-color:var(--org-line);color:var(--org-d)}
+.st[aria-current="step"] i{background:var(--pri);border-color:var(--pri);color:#fff;transform:scale(1.06)}
+.st[aria-current="step"] span{color:var(--pri);font-weight:700}
+.st.done i{background:var(--pri-l);border-color:var(--pri-line);color:var(--pri-d)}
 .st.done span{color:var(--ink2)}
-.st.done:after{background:var(--org-line)}
+.st.done:after{background:var(--pri-line)}
 .st[disabled]{opacity:.5}
 
 /* ---------- layout ---------- */
@@ -80,7 +80,7 @@ main{max-width:600px;margin:0 auto;padding:0 0 132px}
 @media (prefers-reduced-motion:reduce){.screen{animation:none}}
 h2{font-size:22px;font-weight:800;letter-spacing:-.035em;line-height:1.32}
 .lead{font-size:13.5px;color:var(--ink2);margin-top:6px;letter-spacing:-.015em}
-.eyebrow{font-size:12px;font-weight:700;color:var(--org);letter-spacing:.02em;margin-bottom:7px}
+.eyebrow{font-size:12px;font-weight:700;color:var(--pri);letter-spacing:.02em;margin-bottom:7px}
 
 /* ---------- step1 ---------- */
 .search{position:relative;margin-top:16px}
@@ -89,8 +89,8 @@ h2{font-size:22px;font-weight:800;letter-spacing:-.035em;line-height:1.32}
   width:100%;height:50px;border-radius:15px;border:1.5px solid var(--line);background:#fff;
   padding:0 42px 0 42px;font-size:15px;outline:none;transition:border-color .15s,box-shadow .15s;
 }
-.search input:focus{border-color:var(--org-line);box-shadow:0 0 0 4px rgba(232,93,4,.08)}
-.search input::placeholder{color:#A6AEBE}
+.search input:focus{border-color:var(--pri-line);box-shadow:0 0 0 4px rgba(37,99,235,.08)}
+.search input::placeholder{color:#94A3B8}
 .xbtn{position:absolute;right:8px;top:50%;transform:translateY(-50%);width:30px;height:30px;border-radius:50%;color:var(--ink3);display:none;place-items:center}
 .xbtn.on{display:grid}
 .quick{display:flex;gap:8px;overflow-x:auto;padding:14px 0 4px;scroll-snap-type:x proximity;scrollbar-width:none}
@@ -100,7 +100,7 @@ h2{font-size:22px;font-weight:800;letter-spacing:-.035em;line-height:1.32}
   background:#fff;border:1.5px solid var(--line);font-size:13.5px;font-weight:600;letter-spacing:-.02em;
   transition:border-color .15s,background .15s;
 }
-.chip[aria-pressed="true"]{border-color:var(--org);background:var(--org-l);color:var(--org-d)}
+.chip[aria-pressed="true"]{border-color:var(--pri);background:var(--pri-l);color:var(--pri-d)}
 .flg{width:22px;height:16px;border-radius:3px;overflow:hidden;flex:0 0 auto;box-shadow:0 0 0 1px rgba(30,41,59,.10);display:block}
 .flg svg{width:100%;height:100%;object-fit:cover}
 .flg.e{display:grid;place-items:center;box-shadow:none;font-size:15px;width:20px;height:20px}
@@ -109,12 +109,12 @@ h2{font-size:22px;font-weight:800;letter-spacing:-.035em;line-height:1.32}
 .clist li:last-child{border-bottom:0}
 .clist li b{font-weight:600;flex:1}
 .clist li small{font-size:11.5px;color:var(--ink3);letter-spacing:-.01em}
-.clist li[aria-selected="true"]{background:var(--org-l)}
-.clist li[aria-selected="true"] b{color:var(--org-d);font-weight:700}
+.clist li[aria-selected="true"]{background:var(--pri-l)}
+.clist li[aria-selected="true"] b{color:var(--pri-d);font-weight:700}
 .clist li button{display:flex;align-items:center;gap:11px;width:100%;text-align:left;font:inherit}
 .empty{padding:22px 15px;text-align:center;color:var(--ink3);font-size:13.5px}
 .allli{border-bottom:0!important;padding:0!important}
-.allli button{width:100%;padding:13px 15px;text-align:center;font-size:13px;font-weight:700;color:var(--org);letter-spacing:-.02em}
+.allli button{width:100%;padding:13px 15px;text-align:center;font-size:13px;font-weight:700;color:var(--pri);letter-spacing:-.02em}
 
 /* ---------- step2 ---------- */
 .tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}
@@ -126,9 +126,9 @@ h2{font-size:22px;font-weight:800;letter-spacing:-.035em;line-height:1.32}
 .tile svg{width:32px;height:32px;color:var(--ink2)}
 .tile span{font-size:12.5px;font-weight:600;line-height:1.28;text-align:center;letter-spacing:-.03em;color:var(--ink2)}
 .tile span i{display:block;font-style:normal;font-size:10.5px;font-weight:500;color:var(--ink3);margin-top:2px;letter-spacing:-.02em}
-.tile[aria-pressed="true"]{border-color:var(--org);background:var(--org-l)}
-.tile[aria-pressed="true"] span{color:var(--org-d)}
-.tile[aria-pressed="true"] svg{color:var(--org-d)}
+.tile[aria-pressed="true"]{border-color:var(--pri);background:var(--pri-l)}
+.tile[aria-pressed="true"] span{color:var(--pri-d)}
+.tile[aria-pressed="true"] svg{color:var(--pri-d)}
 .tile:active{transform:scale(.97)}
 .picked-note{margin-top:16px;display:flex;gap:9px;align-items:flex-start;font-size:13px;color:var(--ink2);background:#fff;border:1.5px dashed var(--line);border-radius:13px;padding:12px 14px;letter-spacing:-.01em}
 .picked-note b{color:var(--ink);font-weight:700}
@@ -145,19 +145,19 @@ h2{font-size:22px;font-weight:800;letter-spacing:-.035em;line-height:1.32}
 .bx .bt b{display:block;font-size:15px;font-weight:700;letter-spacing:-.02em}
 .bx .bt span{display:block;font-size:12.5px;color:var(--ink3);letter-spacing:-.01em;margin-top:1px}
 .bx .dot{width:20px;height:20px;border-radius:50%;border:1.5px solid var(--line);flex:0 0 auto;display:grid;place-items:center}
-.bx[aria-pressed="true"]{border-color:var(--org);background:var(--org-l)}
-.bx[aria-pressed="true"] .dot{border-color:var(--org);background:var(--org)}
+.bx[aria-pressed="true"]{border-color:var(--pri);background:var(--pri-l)}
+.bx[aria-pressed="true"] .dot{border-color:var(--pri);background:var(--pri)}
 .bx[aria-pressed="true"] .dot:after{content:"";width:7px;height:7px;border-radius:50%;background:#fff}
 .dims{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:10px;background:#fff;border:1.5px solid var(--line);border-radius:15px;padding:13px}
 .dims label{font-size:11.5px;color:var(--ink3);display:block;margin-bottom:4px;letter-spacing:-.01em}
 .dims input{width:100%;height:42px;border:1.5px solid var(--line2);border-radius:10px;background:var(--bg);text-align:center;font-size:15px;font-weight:600;outline:none}
-.dims input:focus{border-color:var(--org-line);background:#fff}
+.dims input:focus{border-color:var(--pri-line);background:#fff}
 .weight{margin-top:16px;background:#fff;border:1.5px solid var(--line);border-radius:15px;padding:14px 15px}
 .weight .wt{display:flex;align-items:center;justify-content:space-between;gap:10px}
 .weight label{font-size:13px;font-weight:700;color:var(--ink2)}
 .stepper{display:flex;align-items:center;gap:4px}
 .stepper button{width:38px;height:38px;border-radius:11px;background:var(--bg);border:1.5px solid var(--line);font-size:19px;font-weight:600;color:var(--ink2);display:grid;place-items:center;line-height:1}
-.stepper button:active{background:var(--org-l);border-color:var(--org-line)}
+.stepper button:active{background:var(--pri-l);border-color:var(--pri-line)}
 .stepper .kv{display:flex;align-items:baseline;gap:2px;padding:0 4px;min-width:78px;justify-content:center}
 .stepper input{width:44px;border:0;background:none;text-align:right;font-size:20px;font-weight:800;letter-spacing:-.03em;outline:none;padding:0}
 .stepper .u{font-size:12.5px;color:var(--ink3);font-weight:600}
@@ -187,28 +187,65 @@ h2{font-size:22px;font-weight:800;letter-spacing:-.035em;line-height:1.32}
   background:#fff;border:1.5px solid var(--line);border-radius:18px;padding:16px;margin-bottom:11px;
   box-shadow:0 1px 2px rgba(30,41,59,.04);transition:border-color .15s,box-shadow .15s;
 }
-.card.hero{border-color:var(--org-line);box-shadow:0 4px 18px rgba(232,93,4,.08)}
+.card.hero{border-color:var(--pri-line);box-shadow:0 4px 18px rgba(37,99,235,.08)}
 .chd{display:flex;align-items:flex-start;gap:8px}
 .chd h3{font-size:16.5px;font-weight:800;letter-spacing:-.03em}
 .chd p{font-size:12.5px;color:var(--ink3);margin-top:1px;letter-spacing:-.01em}
-.bdg{display:inline-flex;align-items:center;height:21px;padding:0 8px;border-radius:7px;font-size:11px;font-weight:700;letter-spacing:-.02em;background:var(--org-l);color:var(--org-d);flex:0 0 auto}
+.bdg{display:inline-flex;align-items:center;height:21px;padding:0 8px;border-radius:7px;font-size:11px;font-weight:700;letter-spacing:-.02em;background:var(--pri-l);color:var(--pri-d);flex:0 0 auto}
 .bdg.g{background:var(--ok-l);color:var(--ok)}
 .bdg.y{background:var(--warn-l);color:var(--warn)}
 .bdg.n{background:var(--no-l);color:var(--no)}
 .bdgs{margin-left:auto;display:flex;gap:5px;flex-wrap:wrap;justify-content:flex-end}
-.plab{font-size:11.5px;font-weight:700;color:var(--org);margin-top:14px;letter-spacing:-.01em}
+.plab{font-size:11.5px;font-weight:700;color:var(--pri);margin-top:14px;letter-spacing:-.01em}
 .pre{font-size:30px;font-weight:800;letter-spacing:-.045em;line-height:1.15;margin-top:1px}
 .pre small{font-size:15px;font-weight:700;margin-left:3px;letter-spacing:-.02em}
 .pre.ask{font-size:22px;color:var(--ink2);letter-spacing:-.03em}
 .win{font-size:12.5px;color:var(--ink3);margin-top:3px;letter-spacing:-.01em}
-.win s{color:#A6AEBE}
+.win.warnc{color:#B45309;font-weight:700}
+.win s{color:#94A3B8}
 .go{
-  width:100%;height:46px;border-radius:12px;background:var(--org);color:#fff;font-size:14.5px;font-weight:700;
+  width:100%;height:46px;border-radius:12px;background:var(--pri);color:#fff;font-size:14.5px;font-weight:700;
   letter-spacing:-.02em;margin-top:13px;transition:background .15s,transform .12s;
 }
-.go:active{transform:scale(.99);background:var(--org-d)}
-.go.ask{background:var(--org-l);color:var(--org-d);border:1.5px solid var(--org-line)}
-.go.ask:active{background:#FFE4D0}
+.go:active{transform:scale(.99);background:var(--pri-d)}
+.go.ask{background:#fff;color:#B45309;border:1.5px solid #F59E0B;font-weight:800}
+.go.ask:active{background:#FEF3C7}
+
+/* ---------- 우체국 확인 필요 (경고) ---------- */
+.alertbox{
+  background:linear-gradient(180deg,#FFF8ED,#FFFBEB);
+  border:1.5px solid var(--warn-line);border-left:5px solid #D97706;
+  border-radius:14px;padding:13px 14px;margin-bottom:14px;
+  box-shadow:0 2px 10px rgba(180,83,9,.09);
+}
+.ab-h{display:flex;align-items:center;gap:8px}
+.ab-ic{width:26px;height:26px;border-radius:8px;background:#D97706;color:#fff;display:grid;place-items:center;font-size:15px;font-weight:800;flex:0 0 auto;line-height:1}
+.ab-h b{font-size:14.5px;font-weight:800;color:#92400E;letter-spacing:-.03em;line-height:1.3}
+.ab-p{margin-top:8px;font-size:12.5px;line-height:1.5;color:#7C2D12;letter-spacing:-.02em}
+.ab-p b{font-weight:800;color:#92400E}
+.alertbox ul{margin-top:7px;display:flex;flex-direction:column;gap:4px}
+.alertbox li{position:relative;padding-left:11px;font-size:12px;line-height:1.45;color:#92400E;letter-spacing:-.02em}
+.alertbox li:before{content:"";position:absolute;left:2px;top:6px;width:4px;height:4px;border-radius:50%;background:#D97706}
+.alertbox.sm{border-left-width:4px;padding:11px 13px;margin:12px 0 0}
+.alertbox.sm .ab-h b{font-size:13.5px}
+.alertbox.sm .ab-p{margin-top:5px;font-size:12px}
+
+.asksec{margin-top:20px;padding-top:15px;border-top:1.5px dashed var(--warn-line)}
+.asksec-h{display:flex;align-items:flex-start;gap:9px;margin-bottom:11px}
+.asksec-h .ic{width:24px;height:24px;border-radius:7px;background:var(--warn-l);border:1px solid #F59E0B;color:#B45309;display:grid;place-items:center;font-size:13px;flex:0 0 auto;margin-top:1px;line-height:1}
+.asksec-h b{display:block;font-size:14.5px;font-weight:800;color:#92400E;letter-spacing:-.02em}
+.asksec-h .d{display:block;font-size:11.5px;color:#A16207;margin-top:2px;letter-spacing:-.01em}
+
+.card.askc{border:2px solid #F59E0B;background:#FFFCF5;box-shadow:0 2px 12px rgba(180,83,9,.12)}
+.card.askc .chd h3{color:#7C2D12}
+.bdg.askb{background:#D97706;color:#fff;height:23px;font-size:11.5px;box-shadow:0 1px 3px rgba(180,83,9,.28);letter-spacing:-.01em}
+.bdg.warnb{background:var(--warn-l);color:#B45309;border:1px solid #F59E0B;height:23px;font-size:11.5px}
+.plab.asklab{color:#B45309}
+.pre.ref{font-size:24px;color:#7C2D12;letter-spacing:-.04em}
+.asknote{display:flex;gap:6px;align-items:flex-start;margin-top:10px;background:#FEF3C7;border:1px solid #FDE68A;border-radius:10px;padding:8px 10px;font-size:12px;line-height:1.45;color:#92400E;letter-spacing:-.02em}
+.asknote b{font-weight:800}
+.note.w{background:#FEF3C7;color:#92400E;border:1px solid #FDE68A}
+.sumbar .wflag{flex:0 0 auto;font-size:11px;font-weight:800;color:#B45309;background:var(--warn-l);border:1px solid #F59E0B;border-radius:7px;padding:2px 6px;letter-spacing:-.01em}
 .more{margin-top:10px;border-top:1px solid var(--line2);padding-top:2px}
 .more>summary{list-style:none;display:flex;align-items:center;gap:5px;padding:9px 0 3px;font-size:12.5px;color:var(--ink2);font-weight:600;cursor:pointer;letter-spacing:-.01em}
 .more>summary::-webkit-details-marker{display:none}
@@ -217,10 +254,10 @@ h2{font-size:22px;font-weight:800;letter-spacing:-.035em;line-height:1.32}
 .more .mb{padding-top:6px}
 .facts{display:flex;flex-direction:column;gap:5px;margin-top:4px}
 .facts li{position:relative;padding-left:10px;font-size:12.5px;color:var(--ink2);line-height:1.5;letter-spacing:-.01em}
-.facts li:before{content:"";position:absolute;left:0;top:7px;width:4px;height:4px;border-radius:50%;background:#CBD3DF}
+.facts li:before{content:"";position:absolute;left:0;top:7px;width:4px;height:4px;border-radius:50%;background:#CBD5E1}
 .facts b{color:var(--ink);font-weight:700}
 .note{font-size:12.5px;color:var(--ink2);line-height:1.5;margin-top:8px;letter-spacing:-.01em;background:var(--bg);border-radius:9px;padding:9px 11px}
-.note.w{background:var(--warn-l);color:#7A4400}
+.note.w{background:var(--warn-l);color:#92400E}
 .save{display:flex;align-items:center;gap:6px;font-size:12.5px;font-weight:700;color:var(--ok);background:var(--ok-l);border-radius:9px;padding:8px 11px;margin-top:10px;letter-spacing:-.01em}
 .row2{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:14px}
 .btn{
@@ -229,9 +266,9 @@ h2{font-size:22px;font-weight:800;letter-spacing:-.035em;line-height:1.32}
 }
 .btn.ghost{background:#fff;border:1.5px solid var(--line);color:var(--ink2)}
 .btn.ghost:active{background:var(--line2)}
-.btn.primary{background:var(--org);color:#fff;width:100%}
+.btn.primary{background:var(--pri);color:#fff;width:100%}
 a.btn{text-decoration:none;line-height:1}
-.btn.primary:active{background:var(--org-d)}
+.btn.primary:active{background:var(--pri-d)}
 .btn:disabled{opacity:.42}
 .tiny{font-size:11.5px;color:var(--ink3);text-align:center;margin-top:10px;letter-spacing:-.01em}
 
@@ -243,16 +280,16 @@ a.btn{text-decoration:none;line-height:1}
 }
 .sumbar .flg{width:18px;height:13px}
 .sumbar b{font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.sumbar .sep{color:#D3DAE4}
+.sumbar .sep{color:#CBD5E1}
 .sumbar span.t{color:var(--ink2);white-space:nowrap}
-.sumbar .chg{margin-left:auto;flex:0 0 auto;font-size:12px;font-weight:700;color:var(--org);padding:4px 8px;border-radius:8px;background:var(--org-l)}
-.tabs{display:grid;grid-template-columns:1fr 1fr;gap:6px;background:#F1ECE4;padding:4px;border-radius:13px;margin-top:16px}
+.sumbar .chg{margin-left:auto;flex:0 0 auto;font-size:12px;font-weight:700;color:var(--pri);padding:4px 8px;border-radius:8px;background:var(--pri-l)}
+.tabs{display:grid;grid-template-columns:1fr 1fr;gap:6px;background:#E8EEF7;padding:4px;border-radius:13px;margin-top:16px}
 .tabs button{height:38px;border-radius:10px;font-size:13px;font-weight:700;color:var(--ink2);letter-spacing:-.02em;display:flex;align-items:center;justify-content:center;gap:5px}
-.tabs button[aria-selected="true"]{background:#fff;color:var(--org-d);box-shadow:0 1px 3px rgba(30,41,59,.09)}
+.tabs button[aria-selected="true"]{background:#fff;color:var(--pri-d);box-shadow:0 1px 3px rgba(30,41,59,.09)}
 .panel{margin-top:11px}
 .field{display:flex;gap:8px}
 .field input{flex:1;height:46px;border-radius:12px;border:1.5px solid var(--line);background:#fff;padding:0 13px;font-size:14.5px;outline:none}
-.field input:focus{border-color:var(--org-line);box-shadow:0 0 0 4px rgba(232,93,4,.07)}
+.field input:focus{border-color:var(--pri-line);box-shadow:0 0 0 4px rgba(37,99,235,.07)}
 .field .sbtn{flex:0 0 auto;height:46px;padding:0 16px;border-radius:12px;background:var(--ink);color:#fff;font-size:13.5px;font-weight:700}
 .field .sbtn:disabled{opacity:.5}
 .hintline{font-size:12px;color:var(--ink3);margin-top:7px;letter-spacing:-.01em}
@@ -266,24 +303,24 @@ a.btn{text-decoration:none;line-height:1}
 .reslist .st{padding:11px 14px;font-size:12.5px;color:var(--ink3);text-align:center}
 form#f{margin-top:18px;display:flex;flex-direction:column;gap:12px}
 .fg label{display:block;font-size:12px;font-weight:700;color:var(--ink2);margin-bottom:5px;letter-spacing:-.01em}
-.fg label em{font-style:normal;color:var(--org);font-size:11px;margin-left:3px}
+.fg label em{font-style:normal;color:var(--pri);font-size:11px;margin-left:3px}
 .fg input,.fg textarea,.fg select{
   width:100%;border:1.5px solid var(--line);border-radius:12px;background:#fff;padding:0 13px;height:46px;
   font-size:14.5px;outline:none;letter-spacing:-.01em;transition:border-color .15s,box-shadow .15s;
 }
 .fg textarea{height:auto;min-height:78px;padding:12px 13px;resize:none;line-height:1.45}
-.fg input:focus,.fg textarea:focus,.fg select:focus{border-color:var(--org-line);box-shadow:0 0 0 4px rgba(232,93,4,.07)}
-.fg input.bad,.fg select.bad,.fg textarea.bad{border-color:#E9A6A0;background:#FFF8F7}
-.fg input.ko,.fg textarea.ko{border-color:#F3C98B;background:#FFFCF5}
+.fg input:focus,.fg textarea:focus,.fg select:focus{border-color:var(--pri-line);box-shadow:0 0 0 4px rgba(37,99,235,.07)}
+.fg input.bad,.fg select.bad,.fg textarea.bad{border-color:#FCA5A5;background:#FEF2F2}
+.fg input.ko,.fg textarea.ko{border-color:#FCD34D;background:#FFFBEB}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .grid3{display:grid;grid-template-columns:1.1fr .9fr 1fr;gap:8px}
 .telrow{display:grid;grid-template-columns:104px 1fr;gap:8px}
 .checks{margin-top:14px;display:flex;flex-direction:column;gap:7px}
 .li{display:flex;gap:8px;font-size:12.5px;line-height:1.5;padding:10px 12px;border-radius:11px;letter-spacing:-.01em}
 .li span:first-child{flex:0 0 auto}
-.li.ok{background:var(--ok-l);color:#0B6247}
-.li.no{background:var(--no-l);color:#8C1D18}
-.li.wn{background:var(--warn-l);color:#7A4400}
+.li.ok{background:var(--ok-l);color:#065F46}
+.li.no{background:var(--no-l);color:#991B1B}
+.li.wn{background:var(--warn-l);color:#92400E}
 .privacy{margin-top:16px;font-size:11.5px;color:var(--ink3);line-height:1.5;display:flex;gap:7px;letter-spacing:-.01em;background:#fff;border:1px solid var(--line2);border-radius:11px;padding:10px 12px}
 .preview{margin-top:16px}
 .preview pre{
@@ -293,17 +330,17 @@ form#f{margin-top:18px;display:flex;flex-direction:column;gap:12px}
 }
 
 /* ---------- 보내는 분 구분선 / 입력 안내 ---------- */
-.sec-hd{margin:4px 0 -2px;display:flex;align-items:center;gap:8px;font-size:11.5px;font-weight:800;color:var(--org-d);letter-spacing:-.01em}
+.sec-hd{margin:4px 0 -2px;display:flex;align-items:center;gap:8px;font-size:11.5px;font-weight:800;color:var(--pri-d);letter-spacing:-.01em}
 .sec-hd::after{content:"";flex:1;height:1px;background:var(--line)}
 .fhint{margin:6px 0 0;font-size:11.5px;color:var(--ink3);line-height:1.45;letter-spacing:-.01em}
 
 /* ---------- 5단계 접수 시트 (복사 → 카카오톡) ---------- */
 .sheet{position:fixed;inset:0;z-index:70;display:flex;align-items:flex-end;justify-content:center}
-.sheet-bg{position:absolute;inset:0;background:rgba(20,28,40,.46);animation:fadein .18s ease}
+.sheet-bg{position:absolute;inset:0;background:rgba(15,23,42,.46);animation:fadein .18s ease}
 .sheet-card{
   position:relative;width:100%;max-width:600px;max-height:92vh;overflow:auto;background:#fff;
   border-radius:22px 22px 0 0;padding:20px 20px calc(18px + env(safe-area-inset-bottom,0px));
-  display:flex;flex-direction:column;gap:9px;box-shadow:0 -10px 34px rgba(20,28,40,.22);
+  display:flex;flex-direction:column;gap:9px;box-shadow:0 -10px 34px rgba(15,23,42,.22);
   animation:sheetup .26s cubic-bezier(.22,1,.36,1);
 }
 .sheet-card .btn{width:100%}
@@ -313,10 +350,10 @@ form#f{margin-top:18px;display:flex;flex-direction:column;gap:12px}
 .ss-desc{text-align:center;font-size:13.5px;color:var(--ink2);line-height:1.5;letter-spacing:-.02em;margin-top:-2px}
 .ss-steps{background:var(--bg);border:1px solid var(--line2);border-radius:13px;padding:10px 12px;display:flex;flex-direction:column;gap:7px}
 .ss-steps>div{display:flex;gap:8px;align-items:flex-start;font-size:12.5px;color:var(--ink2);line-height:1.45;letter-spacing:-.01em}
-.ss-steps>div>b{flex:0 0 auto;width:18px;height:18px;border-radius:50%;background:#fff;border:1px solid var(--line);display:grid;place-items:center;font-size:10.5px;color:var(--org-d);margin-top:1px}
+.ss-steps>div>b{flex:0 0 auto;width:18px;height:18px;border-radius:50%;background:#fff;border:1px solid var(--line);display:grid;place-items:center;font-size:10.5px;color:var(--pri-d);margin-top:1px}
 .ss-steps>div span b{color:var(--ink);font-weight:700}
 .ss-manual{display:flex;flex-direction:column;gap:8px}
-.ss-warn{font-size:12px;color:#7A4400;background:var(--warn-l);border-radius:11px;padding:9px 11px;line-height:1.45;letter-spacing:-.01em}
+.ss-warn{font-size:12px;color:#92400E;background:var(--warn-l);border-radius:11px;padding:9px 11px;line-height:1.45;letter-spacing:-.01em}
 .ss-manual textarea{
   width:100%;height:150px;border:1.5px solid var(--line);border-radius:12px;background:#fff;
   padding:10px 12px;font-size:11.5px;line-height:1.5;color:var(--ink2);resize:none;outline:none;
@@ -330,7 +367,7 @@ form#f{margin-top:18px;display:flex;flex-direction:column;gap:12px}
 .bar{
   position:fixed;left:0;right:0;bottom:0;z-index:45;
   padding:10px 18px calc(10px + env(safe-area-inset-bottom,0px));
-  background:rgba(250,248,245,.96);backdrop-filter:saturate(180%) blur(14px);
+  background:rgba(241,245,249,.96);backdrop-filter:saturate(180%) blur(14px);
   border-top:1px solid var(--line2);display:none;
 }
 .bar.on{display:block}
@@ -799,7 +836,7 @@ function splitOneLine(raw){
 <header class="top">
   <div class="brand">
     <span class="mark" aria-hidden="true">
-      <svg viewBox="0 0 24 24" fill="none"><path d="M3 8.5h18v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" fill="#fff"/><path d="M3 8.5l9 6.5 9-6.5" stroke="#E85D04" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/><path d="M3 8.5V6.6A1.6 1.6 0 0 1 4.6 5h14.8A1.6 1.6 0 0 1 21 6.6v1.9" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
+      <svg viewBox="0 0 24 24" fill="none"><path d="M3 8.5h18v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" fill="#fff"/><path d="M3 8.5l9 6.5 9-6.5" stroke="#2563EB" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/><path d="M3 8.5V6.6A1.6 1.6 0 0 1 4.6 5h14.8A1.6 1.6 0 0 1 21 6.6v1.9" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
     </span>
     <div class="who"><b>정읍영원우체국</b><span>해외배송 견적 · 사전접수</span></div>
   </div>
@@ -864,6 +901,7 @@ function splitOneLine(raw){
     <h2 id="h4t" class="sr">요금</h2>
     <div class="crumb" id="crumb"></div>
     <details class="fold" id="noticeFold" hidden><summary id="noticeSum"><span id="noticeTitle"></span><span class="car">▾</span></summary><div class="body" id="noticeBody"></div></details>
+    <div id="askAlert"></div>
     <div id="cards"></div>
     <details class="fold" id="noFold" hidden><summary><span id="noTitle"></span><span class="car">▾</span></summary><div class="body" id="noBody"></div></details>
     <div class="row2">
@@ -877,6 +915,7 @@ function splitOneLine(raw){
   <section class="screen" id="s5" aria-labelledby="h5t">
     <h2 id="h5t" class="sr">사전접수</h2>
     <div class="sumbar" id="sumbar"></div>
+    <div id="askStep5"></div>
 
     <div class="tabs" role="tablist" aria-label="주소 입력 방법">
       <button type="button" role="tab" id="tabA" aria-selected="true" aria-controls="panelA" data-tab="search">🔍 해외 주소 검색</button>
@@ -1032,6 +1071,7 @@ function splitOneLine(raw){
   /* ---------- 상태 ---------- */
   var S = { step: 1, country: '', items: [], box: 'b3', kg: 3, method: '', tab: 'search' };
   var MAXSTEP = 1;
+  var ASK5 = false; /* 5단계에서 우체국 확인이 필요한 방법을 골랐는지 */
 
   var QUICK = ['미국', '캐나다', '호주', '일본', '중국', '베트남', '대만', '필리핀', '태국', '영국', '독일', '뉴질랜드'];
   var ALIAS = { '미국': 'USA 아메리카', '대만': '타이완', '태국': '타이', '튀르키예': '터키', '호주': '오스트레일리아', '영국': 'UK 잉글랜드', '네덜란드': '네델란드 홀란드', '사이프러스': '키프로스', '스페인': '에스파냐', '홍콩': 'HK', '아랍에미리트': 'UAE 두바이', '남아프리카공화국': '남아공', '뉴질랜드': 'NZ' };
@@ -1059,10 +1099,10 @@ function splitOneLine(raw){
     var top = 'M' + f(x0) + ' ' + f(y0) + 'l' + f(dx) + ' ' + f(-dy) + 'h' + f(L) + 'l' + f(-dx) + ' ' + f(dy) + 'z';
     var side = 'M' + f(x0 + L) + ' ' + f(y0) + 'l' + f(dx) + ' ' + f(-dy) + 'v' + f(H) + 'l' + f(-dx) + ' ' + f(dy) + 'z';
     return '<svg viewBox="0 0 44 44" fill="none" aria-hidden="true">' +
-      '<path d="' + top + '" fill="#FFF1E6" stroke="#E8B48C" stroke-width="1.3" stroke-linejoin="round"/>' +
-      '<path d="' + side + '" fill="#FBE0CC" stroke="#E8B48C" stroke-width="1.3" stroke-linejoin="round"/>' +
-      '<path d="' + front + '" fill="#fff" stroke="#D9A277" stroke-width="1.4" stroke-linejoin="round"/>' +
-      '<path d="M' + f(x0) + ' ' + f(y0 + H * 0.42) + 'h' + f(L) + '" stroke="#EFCDAE" stroke-width="1.2"/></svg>';
+      '<path d="' + top + '" fill="#EFF6FF" stroke="#93C5FD" stroke-width="1.3" stroke-linejoin="round"/>' +
+      '<path d="' + side + '" fill="#DBEAFE" stroke="#93C5FD" stroke-width="1.3" stroke-linejoin="round"/>' +
+      '<path d="' + front + '" fill="#fff" stroke="#93C5FD" stroke-width="1.4" stroke-linejoin="round"/>' +
+      '<path d="M' + f(x0) + ' ' + f(y0 + H * 0.42) + 'h' + f(L) + '" stroke="#BFDBFE" stroke-width="1.2"/></svg>';
   };
 
   /* ---------- 계산 ---------- */
@@ -1167,7 +1207,8 @@ function splitOneLine(raw){
       inner.innerHTML = '<button type="button" class="btn primary" id="nx3">다음 · 요금 보기</button>';
     } else if (S.step === 5) {
       bar.classList.add('on');
-      inner.innerHTML = '<button type="button" class="btn primary" id="send">접수 내용 복사하고 카카오톡 보내기</button>';
+      inner.innerHTML = '<button type="button" class="btn primary" id="send">' +
+        (ASK5 ? '확인 요청 내용 복사하고 카카오톡 보내기' : '접수 내용 복사하고 카카오톡 보내기') + '</button>';
     } else {
       bar.classList.remove('on');
       inner.innerHTML = '';
@@ -1390,11 +1431,38 @@ function splitOneLine(raw){
     var cheapKey = '', cheapT = Infinity;
     priced.forEach(function (s) { if ((s.total || 0) < cheapT) { cheapT = s.total || 0; cheapKey = s.key; } });
 
+    /* 바로 접수되지 않는 방법이 있으면 상단에 경고 배너 */
+    var askA = $('askAlert');
+    if (askA) {
+      if (ask.length) {
+        var reasons = [];
+        ask.forEach(function (s) {
+          (s.notes || []).forEach(function (t) {
+            var txt = String(t).replace(/\((EMS|소포|EMS 프리미엄) 기준\)/g, '').trim();
+            if (txt && reasons.indexOf(txt) < 0) reasons.push(txt);
+          });
+        });
+        var names = S.items.map(itemName).join(' · ');
+        askA.innerHTML = '<div class="alertbox" role="alert">' +
+          '<div class="ab-h"><span class="ab-ic" aria-hidden="true">!</span><b>바로 접수되지 않아요 · 우체국 확인이 필요해요</b></div>' +
+          '<p class="ab-p">담으신 <b>' + esc(names) + '</b> 때문에 일부 방법은 그대로는 접수되지 않아요. 아래 <b>우체국 확인이 필요한 방법</b>은 요금만 참고로 보여드린 것이고, 확인을 거쳐 접수돼요.</p>' +
+          (reasons.length ? '<ul>' + reasons.slice(0, 2).map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('') + '</ul>' : '') +
+          '</div>';
+      } else {
+        askA.innerHTML = '';
+      }
+    }
+
     var h = '';
-    priced.forEach(function (s, i) { h += cardHTML(s, Q, i === 0, cheapKey); });
+    priced.forEach(function (s, i) { h += cardHTML(s, Q, i === 0 && s.st !== 'warn', cheapKey); });
     if (ask.length) {
-      h += '<p class="tiny" style="text-align:left;margin:16px 0 8px;font-weight:700;color:var(--ink2)">우체국 확인이 필요한 방법</p>';
+      h += '<div class="asksec">' +
+        '<div class="asksec-h"><span class="ic" aria-hidden="true">!</span><div>' +
+        '<b>우체국 확인이 필요한 방법 ' + ask.length + '가지</b>' +
+        '<span class="d">아래 요금은 참고용이에요 · 확인 후에 접수돼요</span>' +
+        '</div></div>';
       ask.forEach(function (s) { h += cardHTML(s, Q, false, ''); });
+      h += '</div>';
     }
     $('cards').innerHTML = h;
 
@@ -1412,12 +1480,22 @@ function splitOneLine(raw){
     for (var i = 0; i < ITEMS.length; i++) if (ITEMS[i].id === id) return ITEMS[i].name.replace(/\s*\(.*$/, '');
     return id;
   }
+  /* 카드에 담긴 첫 번째 확인 사유 (문장 그대로) */
+  function askReasonOf(s) {
+    if (!s || !s.notes) return '';
+    for (var i = 0; i < s.notes.length; i++) {
+      var t = String(s.notes[i]).replace(/\((EMS|소포|EMS 프리미엄) 기준\)/g, '').trim();
+      if (t && !/유류할증료|일부 지역은 배달|일부 지역은 서비스/.test(t)) return t;
+    }
+    return '';
+  }
   function cardHTML(s, Q, hero, cheapKey) {
     var priced = s.total != null;
+    var isAsk = s.st === 'ask';
     var price, plab = '';
     if (priced && s.ref) {
-      plab = '<div class="plab" style="color:var(--warn)">참고 금액</div>';
-      price = '<div class="pre">' + won(s.total) + '<small>원</small></div><div class="win">담은 물건 때문에 보낼 수 있는지 확인이 필요해요</div>';
+      plab = '<div class="plab asklab">참고 금액</div>';
+      price = '<div class="pre ref">' + won(s.total) + '<small>원</small></div><div class="win warnc">바로 접수되는 금액이 아니에요 · 확인 후 정해져요</div>';
     } else if (priced && s.dtotal != null && s.dtotal < s.total) {
       plab = '<div class="plab">인터넷 사전접수 할인가</div>';
       price = '<div class="pre">' + won(s.dtotal) + '<small>원</small></div><div class="win">우체국 창구에서 바로 접수하면 ' + won(s.total) + '원</div>';
@@ -1430,8 +1508,8 @@ function splitOneLine(raw){
     var bdg = '';
     if (s.key === 'ems' && s.st !== 'ask') bdg += '<span class="bdg">가장 빠름</span>';
     if (cheapKey && cheapKey === s.key && s.key !== 'ems') bdg += '<span class="bdg g">가장 저렴</span>';
-    if (s.st === 'ask') bdg = '<span class="bdg y">우체국 확인</span>';
-    else if (s.st === 'warn' && s.key !== 'ems') bdg += '<span class="bdg y">확인 필요</span>';
+    if (s.st === 'ask') bdg = '<span class="bdg askb">우체국 확인 필요</span>';
+    else if (s.st === 'warn' && s.key !== 'ems') bdg += '<span class="bdg warnb">접수 전 확인</span>';
 
     var tag = s.key === 'prem' ? 'FedEx 제휴' : s.key === 'air' ? '비행기 소포' : '';
     var sub = [tag, daysText(s)].filter(Boolean).join(' · ');
@@ -1444,6 +1522,7 @@ function splitOneLine(raw){
     }
 
     var facts = [];
+    if (isAsk) facts.push('이 방법은 담으신 물건 때문에 <b>우체국 확인이 먼저</b> 필요해요. 확인 결과에 따라 접수 여부와 요금이 정해져요.');
     if (s.fee != null) {
       var bits = ['<b>' + won(s.fee) + '원</b>'];
       if (s.sur) bits.push('추가운송수수료 <b>' + won(s.sur) + '원</b>');
@@ -1461,14 +1540,17 @@ function splitOneLine(raw){
       var txt = String(t).replace(/\((EMS|소포|EMS 프리미엄) 기준\)/g, '');
       if (!txt) return;
       if (/유류할증료|실제 무게로만|일부 지역은 배달이|일부 지역은 서비스/.test(txt)) { facts.push(txt); return; }
-      notes += '<p class="note' + (s.st === 'warn' && i === 0 ? ' w' : '') + '">' + esc(txt) + '</p>';
+      notes += '<p class="note' + ((s.st === 'warn' || isAsk) && i === 0 ? ' w' : '') + '">' + esc(txt) + '</p>';
     });
 
-    var goLabel = s.st === 'ask' ? '이 방법으로 상담 접수하기' : '이 방법으로 접수하기';
-    return '<article class="card' + (hero ? ' hero' : '') + '">' +
+    var asknote = isAsk
+      ? '<div class="asknote"><span aria-hidden="true">⚠️</span><span>담으신 물건 때문에 <b>바로 접수되지 않아요</b>. 우체국 확인을 거쳐 접수돼요.</span></div>'
+      : '';
+    var goLabel = isAsk ? '확인 후 접수 문의하기' : '이 방법으로 접수하기';
+    return '<article class="card' + (hero ? ' hero' : '') + (isAsk ? ' askc' : '') + '">' +
       '<div class="chd"><div><h3>' + esc(MLAB[s.key]) + '</h3><p>' + esc(sub) + '</p></div><div class="bdgs">' + bdg + '</div></div>' +
-      plab + price + save +
-      '<button type="button" class="go' + (s.st === 'ask' ? ' ask' : '') + '" data-go="' + s.key + '">' + goLabel + ' →</button>' +
+      plab + price + asknote + save +
+      '<button type="button" class="go' + (isAsk ? ' ask' : '') + '" data-go="' + s.key + '">' + goLabel + ' →</button>' +
       '<details class="more"><summary>상세 계산 보기 <span class="car">▾</span></summary><div class="mb">' +
       '<ul class="facts">' + facts.map(function (f) { return '<li>' + f + '</li>'; }).join('') + '</ul>' +
       notes +
@@ -1491,13 +1573,18 @@ function splitOneLine(raw){
     t += '🛍 ' + S.items.map(itemName).join(', ') + '\n\n';
     Q.out.forEach(function (s) {
       var m = methodOf(Q, s.key);
-      if (m.total != null) {
-        t += '· ' + MLAB[s.key] + '  ' + (m.ref ? '참고 ' : '') + (m.dtotal != null && m.dtotal < m.total ? '사전접수 ' + won(m.dtotal) + '원 (창구 ' + won(m.total) + '원)' : won(m.total) + '원') + ' · ' + daysText(m) + '\n';
-      } else if (s.st === 'ask') {
-        t += '· ' + MLAB[s.key] + '  우체국 확인 필요\n';
+      var r = (m && (m.st === 'ask' || m.ref)) ? askReasonOf(m) : '';
+      if (r) {
+        t += '· ' + MLAB[s.key] + '  [우체국 확인 필요]' + (m.total != null ? ' 참고 ' + won(m.total) + '원' : '') + '\n';
+        t += '   ↳ ' + r + '\n';
+      } else if (m.total != null) {
+        t += '· ' + MLAB[s.key] + '  ' + (m.dtotal != null && m.dtotal < m.total ? '사전접수 ' + won(m.dtotal) + '원 (창구 ' + won(m.total) + '원)' : won(m.total) + '원') + ' · ' + daysText(m) + '\n';
       }
     });
     t += '\n' + L + '\n표시 요금은 인터넷우체국 사전접수 기준 예상 금액이에요. 접수할 때 확정돼요.\n';
+    if (Q.out.some(function (s) { var m = methodOf(Q, s.key); return m && (m.st === 'ask' || m.ref); })) {
+      t += '[우체국 확인 필요] 표시된 방법은 요금이 참고용이고, 확인 후에 접수돼요.\n';
+    }
     return t;
   }
   $('copyQuote').addEventListener('click', function () { copyText(quoteText()).then(function (okv) { toast(okv ? '견적을 복사했어요' : '복사가 안 됐어요. 견적을 직접 선택해 복사해 주세요'); }); });
@@ -1507,14 +1594,31 @@ function splitOneLine(raw){
     var Q = quoteAll(), m = S.method ? methodOf(Q, S.method) : null;
     if (!m) { var first = null; Q.out.forEach(function (s) { if (!first && s.total != null) first = s.key; }); S.method = first || 'ems'; m = methodOf(Q, S.method); }
     var bx = Q.bx;
-    var priceTxt = m.total == null ? '요금 문의' : '약 ' + won(m.dtotal != null && m.dtotal < m.total ? m.dtotal : m.total) + '원';
+    var isAsk = !!(m && (m.st === 'ask' || m.ref));
+    ASK5 = isAsk;
+    var priceTxt = m.total == null ? '요금 문의'
+      : isAsk ? '참고 ' + won(m.dtotal != null && m.dtotal < m.total ? m.dtotal : m.total) + '원'
+        : '약 ' + won(m.dtotal != null && m.dtotal < m.total ? m.dtotal : m.total) + '원';
     $('sumbar').innerHTML = flag(S.country) +
       '<b>' + esc(S.country) + '</b><span class="sep">·</span>' +
-      '<span class="t">' + esc(MLAB[m.key]) + '</span><span class="sep">·</span>' +
+      '<span class="t">' + esc(MLAB[m.key]) + '</span>' +
+      (isAsk ? '<span class="wflag">확인 필요</span>' : '') +
+      '<span class="sep">·</span>' +
       '<span class="t">' + esc(bx.id === 'own' ? '직접 포장' : bx.name) + (Q.kg ? '(' + Q.kg + 'kg)' : '') + '</span><span class="sep">·</span>' +
       '<span class="t">' + priceTxt + '</span>' +
       '<button type="button" class="chg" id="chg">변경</button>';
     $('chg').addEventListener('click', function () { go(4); });
+    var a5 = $('askStep5');
+    if (a5) {
+      var rr = isAsk ? askReasonOf(m) : '';
+      a5.innerHTML = isAsk
+        ? '<div class="alertbox sm" role="alert">' +
+          '<div class="ab-h"><span class="ab-ic" aria-hidden="true">!</span><b>우체국 확인이 필요한 접수예요</b></div>' +
+          '<p class="ab-p">이 내용은 <b>바로 접수되는 것이 아니라 확인 요청</b>이에요. 우체국에서 확인한 뒤 접수 여부와 요금이 정해져요.</p>' +
+          (rr ? '<ul><li>' + esc(rr) + '</li></ul>' : '') +
+          '</div>'
+        : '';
+    }
     updateHints();
     validate();
     $('pv').textContent = build();
@@ -1742,7 +1846,13 @@ function splitOneLine(raw){
     var t = '[정읍영원우체국 해외배송 사전접수]\n' + L + '\n';
     t += '📍 도착 국가: ' + S.country + (ENN(S.country) ? ' (' + ENN(S.country) + ')' : '') + '\n';
     t += '🚚 운송 방법: ' + (m ? MLAB[m.key] : '—') +
+      (m && (m.st === 'ask' || m.ref) ? ' · [우체국 확인 필요]' : '') +
       (m && m.total != null ? ' · ' + (m.dtotal != null && m.dtotal < m.total ? '사전접수 약 ' + won(m.dtotal) + '원 (창구 ' + won(m.total) + '원)' : '약 ' + won(m.total) + '원') : ' · 요금 문의') + '\n';
+    if (m && (m.st === 'ask' || m.ref)) {
+      var askR = askReasonOf(m);
+      t += '⚠️ 바로 접수가 아니에요 — 우체국 확인 후 접수돼요.\n';
+      if (askR) t += '   확인 사유: ' + askR + '\n';
+    }
     t += '📦 ' + (bx.d ? bx.name + ' 상자 ' + bx.d.join('×') + 'cm' : '직접 포장 ' + Q.dims.join('×') + 'cm') + ' · 약 ' + (Q.kg || 0) + 'kg\n';
     t += '🛍 보낼 물건: ' + (S.items.length ? S.items.map(itemName).join(', ') : '—') + '\n\n';
     t += '👤 보내는 분\n';
@@ -1791,10 +1901,10 @@ function splitOneLine(raw){
     if (!sh) return;
     $('ssIc').textContent = okv ? '✔' : '!';
     $('ssIc').className = 'ss-ic' + (okv ? '' : ' warn');
-    $('ssTitle').textContent = okv ? '접수 내용이 복사되었습니다' : '접수 내용을 준비했어요';
+    $('ssTitle').textContent = okv ? (ASK5 ? '확인 요청 내용이 복사되었습니다' : '접수 내용이 복사되었습니다') : (ASK5 ? '확인 요청 내용을 준비했어요' : '접수 내용을 준비했어요');
     $('ssDesc').textContent = okv
-      ? '카카오톡 채팅방 입력창에 붙여넣기 해 주세요!'
-      : '아래 내용을 길게 눌러 복사한 뒤 카카오톡에 붙여넣어 주세요.';
+      ? (ASK5 ? '우체국 확인이 필요한 접수예요. 카카오톡에 붙여넣어 확인을 요청해 주세요!' : '카카오톡 채팅방 입력창에 붙여넣기 해 주세요!')
+      : (ASK5 ? '아래 내용을 길게 눌러 복사한 뒤 카카오톡에 붙여넣어 확인을 요청해 주세요.' : '아래 내용을 길게 눌러 복사한 뒤 카카오톡에 붙여넣어 주세요.');
     $('ssSteps').hidden = !okv;
     $('ssManual').hidden = !!okv;
     $('ssText').value = lastText;
