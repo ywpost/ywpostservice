@@ -1178,7 +1178,7 @@ function splitOneLine(raw){
         var g = null;
         for (var j = 0; j < Q.gen.length; j++) if (Q.gen[j].key === key) g = Q.gen[j];
         if (g && g.total != null) {
-          return { key: key, name: s.name, st: s.st, notes: s.notes, days: s.days || g.days, fee: g.fee, sur: g.sur, total: g.total, dtotal: g.dtotal, ref: 1 };
+          return { key: key, name: s.name, st: s.st, notes: s.notes, noteItems: s.noteItems, days: s.days || g.days, fee: g.fee, sur: g.sur, total: g.total, dtotal: g.dtotal, ref: 1 };
         }
       }
       return s;
