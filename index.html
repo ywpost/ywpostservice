@@ -292,6 +292,40 @@ form#f{margin-top:18px;display:flex;flex-direction:column;gap:12px}
   font-family:inherit;letter-spacing:-.01em;
 }
 
+/* ---------- 보내는 분 구분선 / 입력 안내 ---------- */
+.sec-hd{margin:4px 0 -2px;display:flex;align-items:center;gap:8px;font-size:11.5px;font-weight:800;color:var(--org-d);letter-spacing:-.01em}
+.sec-hd::after{content:"";flex:1;height:1px;background:var(--line)}
+.fhint{margin:6px 0 0;font-size:11.5px;color:var(--ink3);line-height:1.45;letter-spacing:-.01em}
+
+/* ---------- 5단계 접수 시트 (복사 → 카카오톡) ---------- */
+.sheet{position:fixed;inset:0;z-index:70;display:flex;align-items:flex-end;justify-content:center}
+.sheet-bg{position:absolute;inset:0;background:rgba(20,28,40,.46);animation:fadein .18s ease}
+.sheet-card{
+  position:relative;width:100%;max-width:600px;max-height:92vh;overflow:auto;background:#fff;
+  border-radius:22px 22px 0 0;padding:20px 20px calc(18px + env(safe-area-inset-bottom,0px));
+  display:flex;flex-direction:column;gap:9px;box-shadow:0 -10px 34px rgba(20,28,40,.22);
+  animation:sheetup .26s cubic-bezier(.22,1,.36,1);
+}
+.sheet-card .btn{width:100%}
+.ss-ic{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:var(--ok-l);color:var(--ok);font-size:20px;font-weight:800;margin:2px auto 0}
+.ss-ic.warn{background:var(--warn-l);color:var(--warn)}
+.sheet-card h3{text-align:center;font-size:18px;font-weight:800;letter-spacing:-.03em;color:var(--ink)}
+.ss-desc{text-align:center;font-size:13.5px;color:var(--ink2);line-height:1.5;letter-spacing:-.02em;margin-top:-2px}
+.ss-steps{background:var(--bg);border:1px solid var(--line2);border-radius:13px;padding:10px 12px;display:flex;flex-direction:column;gap:7px}
+.ss-steps>div{display:flex;gap:8px;align-items:flex-start;font-size:12.5px;color:var(--ink2);line-height:1.45;letter-spacing:-.01em}
+.ss-steps>div>b{flex:0 0 auto;width:18px;height:18px;border-radius:50%;background:#fff;border:1px solid var(--line);display:grid;place-items:center;font-size:10.5px;color:var(--org-d);margin-top:1px}
+.ss-steps>div span b{color:var(--ink);font-weight:700}
+.ss-manual{display:flex;flex-direction:column;gap:8px}
+.ss-warn{font-size:12px;color:#7A4400;background:var(--warn-l);border-radius:11px;padding:9px 11px;line-height:1.45;letter-spacing:-.01em}
+.ss-manual textarea{
+  width:100%;height:150px;border:1.5px solid var(--line);border-radius:12px;background:#fff;
+  padding:10px 12px;font-size:11.5px;line-height:1.5;color:var(--ink2);resize:none;outline:none;
+  font-family:inherit;letter-spacing:-.01em;-webkit-user-select:text;user-select:text;
+}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+@keyframes sheetup{from{transform:translateY(22px);opacity:.5}to{transform:translateY(0);opacity:1}}
+@media (prefers-reduced-motion:reduce){.sheet-bg,.sheet-card{animation:none}}
+
 /* ---------- bottom bar ---------- */
 .bar{
   position:fixed;left:0;right:0;bottom:0;z-index:45;
@@ -867,6 +901,18 @@ function splitOneLine(raw){
     </div>
 
     <form id="f" autocomplete="off" novalidate>
+      <div class="sec-hd">보내는 분 (신청자)</div>
+      <div class="grid2">
+        <div class="fg">
+          <label for="fFromName">보내는 분 성함</label>
+          <input id="fFromName" placeholder="예) 김민수" autocomplete="name">
+        </div>
+        <div class="fg">
+          <label for="fFromTel">보내는 분 연락처</label>
+          <input id="fFromTel" inputmode="tel" placeholder="예) 010-1234-5678" autocomplete="tel">
+        </div>
+      </div>
+      <div class="sec-hd">받는 분</div>
       <div class="fg">
         <label for="fName">받는 분 영문 이름<em>필수</em></label>
         <input id="fName" placeholder="예) KIM MINSU" autocapitalize="characters" spellcheck="false">
@@ -881,6 +927,7 @@ function splitOneLine(raw){
       <div class="fg">
         <label for="fMail">이메일<em>필수</em></label>
         <input id="fMail" inputmode="email" placeholder="예) name@example.com" spellcheck="false">
+        <p class="fhint">세관 서류 확인 및 발송·배송 안내 메일 발송에 사용됩니다.</p>
       </div>
       <div class="fg">
         <label for="fA1">주소 1 (거리·번지)<em>필수</em></label>
@@ -893,7 +940,7 @@ function splitOneLine(raw){
       <div class="grid3">
         <div class="fg"><label for="fCity">도시<em>필수</em></label><input id="fCity" placeholder="Mountain View" spellcheck="false"></div>
         <div class="fg"><label for="fState" id="lState">주 / 도</label><input id="fState" placeholder="CA" spellcheck="false"></div>
-        <div class="fg"><label for="fZip">우편번호<em>필수</em></label><input id="fZip" placeholder="94043" spellcheck="false" inputmode="numeric"></div>
+        <div class="fg"><label for="fZip">우편번호<em>필수</em></label><input id="fZip" placeholder="94043" spellcheck="false" autocapitalize="characters"></div>
       </div>
       <div class="fg">
         <label for="fReq">요청사항</label>
@@ -908,6 +955,29 @@ function splitOneLine(raw){
 </main>
 
 <div class="bar" id="bar"><div class="inner" id="barInner"></div></div>
+
+<!-- 5단계: 복사 → 카카오톡 안내 시트 -->
+<div class="sheet" id="sendSheet" hidden>
+  <div class="sheet-bg" id="ssBg"></div>
+  <div class="sheet-card" role="dialog" aria-modal="true" aria-labelledby="ssTitle" aria-describedby="ssDesc" id="ssCard">
+    <div class="ss-ic" id="ssIc" aria-hidden="true">✔</div>
+    <h3 id="ssTitle">접수 내용이 복사되었습니다</h3>
+    <p class="ss-desc" id="ssDesc">카카오톡 채팅방 입력창에 붙여넣기 해 주세요!</p>
+    <div class="ss-steps" id="ssSteps">
+      <div><b>1</b><span>아래 <b>카카오톡 채팅 열기</b>를 눌러요</span></div>
+      <div><b>2</b><span>채팅 입력창을 길게 눌러 <b>붙여넣기</b>를 눌러요</span></div>
+      <div><b>3</b><span>내용을 확인하고 보내기를 눌러요</span></div>
+    </div>
+    <div class="ss-manual" id="ssManual" hidden>
+      <p class="ss-warn">자동 복사가 안 됐어요. 아래 내용을 길게 눌러 전체 선택한 뒤 복사해 주세요.</p>
+      <textarea id="ssText" readonly aria-label="접수 내용"></textarea>
+      <button type="button" class="btn ghost" id="ssCopy">다시 복사하기</button>
+    </div>
+    <a class="btn primary" id="ssKakao" href="https://pf.kakao.com/_wYcxhX/chat" target="_blank" rel="noopener">카카오톡 채팅 열기</a>
+    <button type="button" class="btn ghost" id="ssClose">닫기</button>
+  </div>
+</div>
+
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <script>
 /* =====================================================================
@@ -1053,6 +1123,7 @@ function splitOneLine(raw){
     if (n > 1 && !S.country) { n = 1; }
     if (n > 2 && !S.items.length) { n = 2; }
     if (n > 3 && !S.box) { n = 3; }
+    closeSheet();
     S.step = n;
     MAXSTEP = Math.max(MAXSTEP, n);
     ['s1', 's2', 's3', 's4', 's5'].forEach(function (id, i) {
@@ -1096,7 +1167,7 @@ function splitOneLine(raw){
       inner.innerHTML = '<button type="button" class="btn primary" id="nx3">다음 · 요금 보기</button>';
     } else if (S.step === 5) {
       bar.classList.add('on');
-      inner.innerHTML = '<a class="btn primary" id="send" href="' + KAKAO + '" target="_blank" rel="noopener">접수 내용 복사하고 카카오톡 보내기</a>';
+      inner.innerHTML = '<button type="button" class="btn primary" id="send">접수 내용 복사하고 카카오톡 보내기</button>';
     } else {
       bar.classList.remove('on');
       inner.innerHTML = '';
@@ -1455,6 +1526,16 @@ function splitOneLine(raw){
     if (r.stReq) stL.innerHTML = (r.stName || '주 / 도') + '<em>필수</em>';
     $('fState').placeholder = r.st === 'US' ? 'CA' : r.st === 'CA' ? 'ON' : r.st === 'AU' ? 'NSW' : '';
     $('fZip').placeholder = r.zipHint ? r.zipHint.replace(/^.*?\(예: /, '').replace(/\).*$/, '') : '';
+    /* 우편번호 자판: 영문이 들어가는 나라(영국·캐나다 등)는 텍스트 자판, 숫자만 쓰는 나라만 숫자 자판 */
+    var zel = $('fZip');
+    if (zel) {
+      var zsrc = r.zip ? String(r.zip.source || '') : '';
+      var hasAlpha = !zsrc || /[A-Za-z]/.test(zsrc);
+      zel.setAttribute('inputmode', hasAlpha ? 'text' : 'numeric');
+      zel.setAttribute('autocapitalize', hasAlpha ? 'characters' : 'off');
+      zel.setAttribute('autocorrect', 'off');
+      zel.setAttribute('enterkeyhint', 'done');
+    }
     $('aHint').innerHTML = '도로명·건물명을 영문으로 넣어 주세요. 지도에 있는 ' + esc(S.country) + ' 주소를 찾아 칸에 채워 드려요.';
   }
   function setTab(t) {
@@ -1630,10 +1711,15 @@ function splitOneLine(raw){
     }
     if (v.tel && !/^[0-9()+.\-\s]{6,20}$/.test(v.tel)) { msgs.push(['wn', '연락처는 숫자와 - 만 넣어 주세요']); $('fTel').classList.add('bad'); }
     if (v.mail && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.mail)) { msgs.push(['no', '이메일 주소 형식을 확인해 주세요']); $('fMail').classList.add('bad'); }
+    var fromName = String($('fFromName') ? $('fFromName').value : '').trim();
+    var fromTel = String($('fFromTel') ? $('fFromTel').value : '').trim();
+    if (!fromName && !fromTel) msgs.push(['wn', '보내는 분 성함·연락처를 넣어 주시면 접수 확인과 발송 안내가 빨라져요.']);
+    else if (!fromName) msgs.push(['wn', '보내는 분 성함을 넣어 주세요.']);
+    else if (!fromTel) msgs.push(['wn', '보내는 분 연락처를 넣어 주시면 발송 중 문제가 생겼을 때 바로 연락드릴 수 있어요.']);
 
     var h = '';
     if (!miss.length && !msgs.length) {
-      h = '<div class="li ok"><span>✔</span><span>필요한 항목이 다 들어갔어요. 아래 버튼을 누르면 접수 내용이 복사되고 카카오톡이 열려요.</span></div>';
+      h = '<div class="li ok"><span>✔</span><span>필요한 항목이 다 들어갔어요. 아래 버튼을 누르면 접수 내용이 복사되고, 이어서 카카오톡 보내기 안내가 나와요.</span></div>';
     } else {
       if (miss.length) h += '<div class="li no"><span>•</span><span>아직 비어 있어요: ' + esc(miss.join(', ')) + '</span></div>';
       msgs.forEach(function (m) { h += '<div class="li ' + m[0] + '"><span>•</span><span>' + esc(m[1]) + '</span></div>'; });
@@ -1657,6 +1743,9 @@ function splitOneLine(raw){
       (m && m.total != null ? ' · ' + (m.dtotal != null && m.dtotal < m.total ? '사전접수 약 ' + won(m.dtotal) + '원 (창구 ' + won(m.total) + '원)' : '약 ' + won(m.total) + '원') : ' · 요금 문의') + '\n';
     t += '📦 ' + (bx.d ? bx.name + ' 상자 ' + bx.d.join('×') + 'cm' : '직접 포장 ' + Q.dims.join('×') + 'cm') + ' · 약 ' + (Q.kg || 0) + 'kg\n';
     t += '🛍 보낼 물건: ' + (S.items.length ? S.items.map(itemName).join(', ') : '—') + '\n\n';
+    t += '👤 보내는 분\n';
+    t += '성함 Name: ' + (v('fFromName') || '—') + '\n';
+    t += '연락처 Mobile: ' + (v('fFromTel') || '—') + '\n\n';
     t += '👤 받는 분\n';
     t += '이름 Name: ' + (v('fName') || '—') + '\n';
     t += '국가 Country: ' + S.country + (ENN(S.country) ? ' · ' + ENN(S.country) : '') + '\n';
@@ -1673,20 +1762,65 @@ function splitOneLine(raw){
   }
 
   function send(e) {
+    if (e && e.preventDefault) e.preventDefault();
     var va = validate();
     if (!va.ok) {
-      if (e) e.preventDefault();
       toast(va.miss.length ? '아직 비어 있는 칸이 있어요: ' + va.miss.join(', ') : '확인이 필요한 항목이 있어요');
       var box = $('chk');
       if (box) box.scrollIntoView({ block: 'center', behavior: 'smooth' });
       return;
     }
     var text = build();
+    lastText = text;
     $('pv').textContent = text;
+    var btn = $('send');
+    var lab = btn ? btn.textContent : '';
+    if (btn) { btn.disabled = true; btn.textContent = '접수 내용 복사 중…'; }
     copyText(text).then(function (okv) {
-      toast(okv ? '접수 내용을 복사했어요. 카카오톡에 붙여넣어 주세요' : '복사가 안 됐어요. 미리보기의 내용을 길게 눌러 복사해 주세요');
+      if (btn) { btn.disabled = false; btn.textContent = lab; }
+      openSheet(okv);
     });
   }
+
+  /* 복사 결과 안내 시트: 복사 성공 → 카톡 열기 안내 / 실패 → 직접 복사할 수 있는 칸 */
+  var lastText = '';
+  function openSheet(okv) {
+    var sh = $('sendSheet');
+    if (!sh) return;
+    $('ssIc').textContent = okv ? '✔' : '!';
+    $('ssIc').className = 'ss-ic' + (okv ? '' : ' warn');
+    $('ssTitle').textContent = okv ? '접수 내용이 복사되었습니다' : '접수 내용을 준비했어요';
+    $('ssDesc').textContent = okv
+      ? '카카오톡 채팅방 입력창에 붙여넣기 해 주세요!'
+      : '아래 내용을 길게 눌러 복사한 뒤 카카오톡에 붙여넣어 주세요.';
+    $('ssSteps').hidden = !okv;
+    $('ssManual').hidden = !!okv;
+    $('ssText').value = lastText;
+    sh.hidden = false;
+    document.body.style.overflow = 'hidden';
+    try {
+      if (!okv) { $('ssText').focus(); $('ssText').select(); }
+      else { $('ssKakao').focus({ preventScroll: true }); }
+    } catch (x) { }
+  }
+  function closeSheet() {
+    var sh = $('sendSheet');
+    if (!sh || sh.hidden) return;
+    sh.hidden = true;
+    document.body.style.overflow = '';
+  }
+  $('ssClose').addEventListener('click', closeSheet);
+  $('ssBg').addEventListener('click', closeSheet);
+  $('ssCopy').addEventListener('click', function () {
+    copyText(lastText).then(function (okv) {
+      if (okv) { openSheet(true); toast('접수 내용을 복사했어요. 카카오톡에 붙여넣어 주세요'); }
+      else { toast('복사가 안 됐어요. 위 내용을 길게 눌러 직접 복사해 주세요'); }
+    });
+  });
+  $('ssText').addEventListener('click', function () { try { this.focus(); this.select(); } catch (e) { } });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeSheet();
+  });
 
   function copyText(text) {
     return new Promise(function (res) {
@@ -1695,7 +1829,8 @@ function splitOneLine(raw){
       try {
         if (navigator.clipboard && navigator.clipboard.writeText) {
           navigator.clipboard.writeText(text).then(function () { ok(true); }, function () { ok(fallbackCopy(text)); });
-          setTimeout(function () { ok(true); }, 1200);
+          /* 복사가 응답 없이 멈춰도 막히지 않도록 한 번 더 폴백 시도 */
+          setTimeout(function () { if (!done) ok(fallbackCopy(text)); }, 1500);
           return;
         }
       } catch (e) { }
@@ -1722,7 +1857,7 @@ function splitOneLine(raw){
   }
 
   /* 폼 입력 → 실시간 검사 */
-  ['fName', 'fTel', 'fMail', 'fA1', 'fA2', 'fCity', 'fState', 'fZip', 'fReq'].forEach(function (id) {
+  ['fFromName', 'fFromTel', 'fName', 'fTel', 'fMail', 'fA1', 'fA2', 'fCity', 'fState', 'fZip', 'fReq'].forEach(function (id) {
     var elx = $(id); if (!elx) return;
     elx.addEventListener('input', function () {
       if (id === 'fState') {
@@ -1736,7 +1871,7 @@ function splitOneLine(raw){
       if (S.step === 5) $('pv').textContent = build();
     });
   });
-  $('pvFold').addEventListener('toggle', function () { if ($('pvFold').open) $('pv').textContent = build(); });
+      $('pvFold').addEventListener('toggle', function () { if ($('pvFold').open) $('pv').textContent = build(); });
 
   /* ---------- 시작 ---------- */
   renderQuick();
