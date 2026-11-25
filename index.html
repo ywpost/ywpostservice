@@ -1530,7 +1530,9 @@ function splitOneLine(raw){
     var zel = $('fZip');
     if (zel) {
       var zsrc = r.zip ? String(r.zip.source || '') : '';
-      var hasAlpha = !zsrc || /[A-Za-z]/.test(zsrc);
+      /* 패턴 문자열의 \d·\s 같은 이스케이프를 걷어낸 뒤 진짜 영문자를 쓰는지 본다 */
+      var zplain = zsrc.replace(/\\[dDsSbB]/g, '').replace(/\\[wW]/g, 'A');
+      var hasAlpha = !zsrc || /[A-Za-z]/.test(zplain);
       zel.setAttribute('inputmode', hasAlpha ? 'text' : 'numeric');
       zel.setAttribute('autocapitalize', hasAlpha ? 'characters' : 'off');
       zel.setAttribute('autocorrect', 'off');
