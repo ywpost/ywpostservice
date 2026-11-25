@@ -291,10 +291,13 @@ a.btn{text-decoration:none;line-height:1}
 
 /* ---------- step5 ---------- */
 .sumbar{
-  display:flex;align-items:center;gap:8px;padding:9px 12px;background:#fff;border:1.5px solid var(--line);
+  display:block;padding:9px 12px;background:#fff;border:1.5px solid var(--line);
   border-radius:12px;font-size:12.5px;letter-spacing:-.02em;position:relative;
   box-shadow:0 1px 3px rgba(30,41,59,.04);overflow:hidden;
 }
+.sumbar .sl1{display:flex;align-items:center;gap:6px;min-width:0}
+.sumbar .sl2{display:flex;align-items:center;gap:6px;margin-top:3px;min-width:0}
+.sumbar .sl2 span.t{font-size:12px;color:var(--ink3)}
 .sumbar .flg{width:18px;height:13px}
 .sumbar b{font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .sumbar .sep{color:#CBD5E1}
@@ -1645,7 +1648,8 @@ function splitOneLine(raw){
       notes += '<p class="note' + ((s.st === 'warn' || isAsk) && !notes ? ' w' : '') + '">' + who + esc(txt) + '</p>';
     });
 
-    var asknote = isAsk
+    /* 사유 문구가 따로 없을 때만 일반 경고 줄을 넣는다 (같은 말 반복 방지) */
+    var asknote = (isAsk && !notes)
       ? '<div class="asknote"><span aria-hidden="true">⚠️</span><span>담으신 물건 때문에 <b>바로 접수되지 않아요</b>. 우체국 확인을 거쳐 접수돼요.</span></div>'
       : '';
     var goLabel = isAsk ? '확인 후 접수 문의하기' : '이 방법으로 접수하기';
@@ -1700,25 +1704,31 @@ function splitOneLine(raw){
     var priceTxt = m.total == null ? '요금 문의'
       : isAsk ? '참고 ' + won(m.dtotal != null && m.dtotal < m.total ? m.dtotal : m.total) + '원'
         : '약 ' + won(m.dtotal != null && m.dtotal < m.total ? m.dtotal : m.total) + '원';
-    $('sumbar').innerHTML = flag(S.country) +
+    $('sumbar').innerHTML =
+      '<div class="sl1">' + flag(S.country) +
       '<b>' + esc(S.country) + '</b><span class="sep">·</span>' +
       '<span class="t">' + esc(MLAB[m.key]) + '</span>' +
       (isAsk ? '<span class="wflag">확인 필요</span>' : '') +
-      '<span class="sep">·</span>' +
-      '<span class="t">' + esc(bx.id === 'own' ? '직접 포장' : bx.name) + (Q.kg ? '(' + Q.kg + 'kg)' : '') + '</span><span class="sep">·</span>' +
-      '<span class="t">' + priceTxt + '</span>' +
-      '<button type="button" class="chg" id="chg">변경</button>';
+      '<button type="button" class="chg" id="chg">변경</button></div>' +
+      '<div class="sl2"><span class="t">' + esc(bx.id === 'own' ? '직접 포장' : bx.name) + (Q.kg ? '(' + Q.kg + 'kg)' : '') + '</span>' +
+      '<span class="sep">·</span><span class="t">' + priceTxt + '</span></div>';
     $('chg').addEventListener('click', function () { go(4); });
     var a5 = $('askStep5');
     if (a5) {
-      var rr = isAsk ? askReasonOf(m) : '';
+      var rr = (m && (isAsk || m.st === 'warn')) ? askReasonOf(m) : '';
       a5.innerHTML = isAsk
         ? '<div class="alertbox sm" role="alert">' +
-          '<div class="ab-h"><span class="ab-ic" aria-hidden="true">!</span><b>우체국 확인이 필요한 접수예요</b></div>' +
+          '<div class="ab-h"><span class="ab-ic" aria-hidden="true">!</span><div><b>우체국 확인이 필요한 접수예요</b></div></div>' +
           '<p class="ab-p">이 내용은 <b>바로 접수되는 것이 아니라 확인 요청</b>이에요. 우체국에서 확인한 뒤 접수 여부와 요금이 정해져요.</p>' +
           (rr ? '<ul><li>' + esc(rr) + '</li></ul>' : '') +
           '</div>'
-        : '';
+        : (rr
+          ? '<div class="alertbox sm" role="alert">' +
+            '<div class="ab-h"><span class="ab-ic" aria-hidden="true">!</span><div><b>접수 전에 확인할 사항이 있어요</b></div></div>' +
+            '<p class="ab-p">아래 조건에 맞아야 접수돼요. 조건이 맞지 않으면 접수가 취소될 수 있어요.</p>' +
+            '<ul><li>' + esc(rr) + '</li></ul>' +
+            '</div>'
+          : '');
     }
     updateHints();
     validate();
@@ -1953,6 +1963,9 @@ function splitOneLine(raw){
       var askR = askReasonOf(m);
       t += '⚠️ 바로 접수가 아니에요 — 우체국 확인 후 접수돼요.\n';
       if (askR) t += '   확인 사유: ' + askR + '\n';
+    } else if (m && m.st === 'warn') {
+      var warnR = askReasonOf(m);
+      if (warnR) t += '⚠️ 접수 전 확인: ' + warnR + '\n';
     }
     t += '📦 ' + (bx.d ? bx.name + ' 상자 ' + bx.d.join('×') + 'cm' : '직접 포장 ' + Q.dims.join('×') + 'cm') + ' · 약 ' + (Q.kg || 0) + 'kg\n';
     t += '🛍 보낼 물건: ' + (S.items.length ? S.items.map(itemName).join(', ') : '—') + '\n\n';
